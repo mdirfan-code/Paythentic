@@ -1,0 +1,24 @@
+1)Landing Page:
+	2 buttons -> Login ,Sign up as employee/employer
+	Basic information about product
+	payment security solution explaination
+	Feedback
+
+2)About us Page
+	contact
+
+3)login/Sign Up page
+
+-----------------------------------------------------------
+Logged in as employee -->
+		profile page
+		Dashboard page	
+		History
+		Active project
+
+Logged in as employer -->
+		profile page
+		Dashboard page	
+		History
+		Active project
+
