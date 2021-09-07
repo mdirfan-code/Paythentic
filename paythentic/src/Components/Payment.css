@@ -1,0 +1,113 @@
+.On{
+    position:absolute;
+  
+    left: 0;
+    right: 0;
+    bottom: 5rem;
+
+    margin: auto;
+    min-width: fit-content;
+    width: 20%;
+    padding-top: 0.2rem !important;
+    padding: 3rem;
+    border-radius: 5px;
+    background-color: #d0ecff;
+    display: flex;
+    flex-direction: column;
+
+   
+}
+
+.On>h2,h3,h4{
+    color:rgb(0, 16, 26);
+}
+.On>span>input{
+    padding: 0.3rem;
+   
+}
+.OffBG{
+    display: none;
+}
+.OnBG{
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.664);
+}
+.expDate-container{
+    display: flex;
+    align-items: center;
+}
+
+.cvv-container{
+display: flex;
+width: max-content;
+align-items: center;
+justify-content: space-between;
+}
+
+.cvv-container > input{
+    width: 1.8rem;
+}
+
+.expDate-cvv{
+    display: flex;
+    justify-content: space-between;
+     
+}
+
+.expDate-cvv>span>input{
+    height: 0.8rem;
+    padding: 0.3rem
+}
+
+.expDate{
+    width: 1.4rem;
+}
+
+.Off{
+    display: none;
+}
+
+.card-btn{
+    border: none;
+    padding: 5px;
+    color: #fff;
+    font-weight: 700;
+    background-color: #0068ad;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.close-btn-wrap{
+
+    display: flex;
+    justify-content: space-between;
+}
+.close-btn-wrap>h1{
+    color: rgb(199, 12, 12);
+    padding: 2px;
+    border:2px solid rgba(199, 12, 12, 0);
+}
+.close-btn-wrap>h1:hover{
+ 
+    border:2px solid rgb(199, 12, 12);
+}
+
+@media only screen and (max-width: 580px) {
+    .On{
+        
+        bottom: 0;
+    }
+}
