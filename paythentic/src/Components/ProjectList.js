@@ -28,7 +28,7 @@ export default function ProjectList() {
                   ))
                 }
             </div>
-            <button >+ Create Project</button>
+            <button className="create-proj-btn">+ Create Project</button>
         </div>
     )
 }
