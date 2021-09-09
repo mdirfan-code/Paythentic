@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-import './ProjectList.css'
+import './ProjectList.css';
+import CreateProjectForm from './CreateProjectForm.js';
 export default function ProjectList() {
 
 
@@ -14,7 +15,7 @@ export default function ProjectList() {
     
 
 
-    return (
+    return (<>
         <div className="bg-DshBrd">
             <span className="title-wrap"><h1 className='title-your-proj'>Your Projects</h1></span>
             <span className="proj-btns"><button className="proj-btn active-proj" onClick={()=>setCurrentListHandler(ACTIVE_PROJECT)}>Active</button><button className="proj-btn history-proj" onClick={()=>setCurrentListHandler(HISTORY_PROJECT)}>History</button></span>
@@ -28,7 +29,10 @@ export default function ProjectList() {
                   ))
                 }
             </div>
+            
             <button className="create-proj-btn">+ Create Project</button>
         </div>
+        <CreateProjectForm />
+        </>
     )
 }

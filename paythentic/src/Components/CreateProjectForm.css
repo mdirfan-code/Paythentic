@@ -1,0 +1,19 @@
+.create-proj-form{
+    position:absolute;
+  
+    left: 0;
+    right: 0;
+    bottom: 5rem;
+    z-index: 2;
+    margin: auto;
+    min-width: fit-content;
+    width: 20%;
+    padding-top: 0.2rem !important;
+    padding: 3rem;
+    border-radius: 5px;
+    background-color: #d0ecff;
+    display: flex;
+    flex-direction: column;
+
+
+}
