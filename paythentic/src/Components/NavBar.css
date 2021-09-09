@@ -56,6 +56,23 @@ padding-top:4.5rem;
     column-gap: 1.8rem;
 }
 
+#search-bar{
+    background-color: rgb(131, 205, 255);
+    padding: 0.3rem 2rem;
+    border-radius: 30px;
+    
+}
+
+#search-bar>input{
+ 
+    background-color: rgba(131, 205, 255, 0.767);
+    padding: 0.3rem;
+    border: none;
+}
+#search-bar>input:focus{
+   outline: none;
+}
+
 .profile-option{
     display: flex;
     flex-direction: row;
