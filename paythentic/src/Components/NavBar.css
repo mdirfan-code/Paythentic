@@ -35,7 +35,7 @@ h1{
 .Options-OnOption{
     position: absolute;
 
-    background-color: rgb(6, 27, 41);;
+    background-color: rgb(6, 27, 41);
 padding-top:4.5rem;
 
     padding: 0.5rem;
@@ -62,6 +62,25 @@ padding-top:4.5rem;
     border-radius: 30px;
     
 }
+
+::placeholder {
+    color: rgb(6, 27, 41);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:rgb(6, 27, 41);
+   font-size: 0.9rem;
+   font-weight: 600;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: rgb(6, 27, 41);
+   font-size: 0.9rem;
+   font-weight: 600;
+  }
 
 #search-bar>input{
  
