@@ -7,8 +7,8 @@ function App() {
   return (
     <div>
      <NavBar userName="mdirfan.code" />
-     <ProjectList/>
-     {/* <Dashboard /> */}
+     {/* <ProjectList/> */}
+     <Dashboard />
      
    
     </div>
