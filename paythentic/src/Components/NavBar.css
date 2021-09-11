@@ -32,22 +32,38 @@ h1{
     
 }
 
-.Options-OnOption{
-    position: absolute;
-
+.Options{
+    position: fixed;
+    z-index: 3;
+    top: 4.3rem;
+    display: flex;
     background-color: rgb(6, 27, 41);
-padding-top:4.5rem;
+    padding-top:4.3rem;
 
     padding: 0.5rem;
     row-gap: 1rem;
     right: 0;
-    display: flex;
+   
     flex-direction: column;
 }
-
-.Options-OffOption{
-    display: none;
+ul{
+    list-style-type: none;
 }
+
+.cross-btn{
+display: flex;
+justify-content: center;
+border-radius:10px ;
+
+}
+.Options>span:hover{
+    background-color: rgba(255, 255, 255, 0.24);
+}
+.update-profile-btn{
+   padding: 2px;
+   border-radius:10px ;
+}
+
 
 .right-cor{
     display: flex;
