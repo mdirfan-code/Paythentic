@@ -1,12 +1,14 @@
 import React,{useState} from 'react'
 import './ProjectList.css';
 import CreateProjectForm from './CreateProjectForm.js';
+
 export default function ProjectList() {
 
 
     const ACTIVE_PROJECT = [{'projNo':12,'projName':'Logo creation'},{'projNo':13,'projName':'Web Design'},{'projNo':24,'projName':'Video Editing'},{'projNo':38,'projName':'Content Writing'},{'projNo':92,'projName':'Web Scraping'},{'projNo':45,'projName':'Building E-commerce Website'},{'projNo':80,'projName':'Business Card Design'},{'projNo':66,'projName':'Enhancing Song "falana dhimkana"'}];
     const HISTORY_PROJECT = [{'projNo':92,'projName':'Web Scraping'},{'projNo':45,'projName':'Building E-commerce Website'},{'projNo':80,'projName':'Business Card Design'},{'projNo':66,'projName':'Enhancing Song "falana dhimkana"'}];
     
+    const [ isDialBoxVisible, setVisibility] = useState(false)
     const [currentList, setCurrentList] = useState(ACTIVE_PROJECT);
 
     const setCurrentListHandler = (listToSet) => {
@@ -16,6 +18,7 @@ export default function ProjectList() {
 
 
     return (<>
+     {isDialBoxVisible && <div className='OnBG' onClick={() => setVisibility(!isDialBoxVisible)}></div>}
         <div className="bg-DshBrd">
             <span className="title-wrap"><h1 className='title-your-proj'>Your Projects</h1></span>
             <span className="proj-btns"><button className="proj-btn active-proj" onClick={()=>setCurrentListHandler(ACTIVE_PROJECT)}>Active</button><button className="proj-btn history-proj" onClick={()=>setCurrentListHandler(HISTORY_PROJECT)}>History</button></span>
@@ -30,9 +33,9 @@ export default function ProjectList() {
                 }
             </div>
             
-            <button className="create-proj-btn">+ Create Project</button>
+            <button className="create-proj-btn" onClick={() => setVisibility(!isDialBoxVisible)}>+ Create Project</button>
         </div>
-        <CreateProjectForm />
+        {isDialBoxVisible && <CreateProjectForm />}
         </>
     )
 }

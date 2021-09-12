@@ -13,7 +13,7 @@ function NavBar({userName}) {
     return (
         <nav className="NavBar">
             <a id="paythentic-logo"><h1>PayThentic</h1></a>
-            <div className="right-cor"><span id='search-bar'><Icon path={mdiMagnify} title="User Profile" size={1}   color="rgb(6, 27, 41)" onMouseOver/><input  type="text" placeholder="Search"/></span>
+            <div className="right-cor"><span id='search-bar'><Icon path={mdiMagnify} title="User Profile" size={1}   color="rgb(6, 27, 41)" /><input  type="text" placeholder="Search"/></span>
             <div className="profile-option" onClick={() => setVisibility(!isDialBoxVisible) } >
                 <h2>@{userName}</h2>
                 <img className="profile-image" src="https://source.unsplash.com/EQFtEzJGERg/1600x1600" alt="Profile Pic"/>

@@ -1,5 +1,6 @@
 .create-proj-form{
     position:absolute;
+
   
     left: 0;
     right: 0;
@@ -8,12 +9,53 @@
     margin: auto;
     min-width: fit-content;
     width: 20%;
-    padding-top: 0.2rem !important;
+  
     padding: 3rem;
-    border-radius: 5px;
-    background-color: #d0ecff;
+    border-radius: 2px;
+    background-color: #9dd4ff;
     display: flex;
     flex-direction: column;
+    
 
 
 }
+.create-btn{
+    margin-top: 1rem;
+    border: none;
+    padding: 5px;
+    color: #fff;
+    font-weight: 700;
+    background-color: #0068ad;
+}
+
+.create-btn:hover{
+    background-color: #1881c7;
+    color: rgb(255, 255, 255);
+    
+}
+
+.create-proj-form>h1{
+    color:  rgb(0, 16, 26);
+}
+
+.create-proj-form>form{
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+}
+
+form>input{
+    padding: 5px;
+}
+
+form>h3{
+    color:  rgb(0, 16, 26);
+}
+input:focus{
+    outline: none;
+ }
+
+ textarea:focus{
+     outline: none;
+ }
+

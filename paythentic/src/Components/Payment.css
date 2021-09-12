@@ -18,6 +18,12 @@
    
 }
 
+.card-btn:hover{
+    background-color:#1881c7;
+    color: rgb(255, 255, 255);
+    
+}
+
 .On>h2,h3,h4{
     color:rgb(0, 16, 26);
 }
@@ -25,6 +31,11 @@
     padding: 0.3rem;
    
 }
+
+input:focus{
+    outline: none;
+ }
+
 .OffBG{
     display: none;
 }
