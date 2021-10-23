@@ -1,0 +1,24 @@
+Abstract
+ Now a days freelacing became a new way of buisness. There are many websites like fivver, upwork or social media platforms like LinkedIn those provides platform to freelancers and clients (people who wants to hire freelancers) to connect and work together. But When it comes to transaction (work and payment transaction) most of people do things responsibliy, despite sometimes people gets incounterd with frauds and loose their time, money and efforts. These frauds can be happen with both freelancer and client. 
+	And on presently available platforms there are very less or no features to deal with these kind of frauds so we come up with the idea of a platform that helps in ensuring transaction and reduce threat of frauds. Additionally it helps to manage multiple projects at a time.
+	In project there are 3 actors involved:
+1) Admin - A person who monitor fraud reports, manage users and take action over reported user if he found guilty.
+2) Client - This actor can hire freelancer and create project for freelancer to work on it.
+3) Freelancer - He is responsible for project dilevery, connection with client and work on project.   
+
+Rest work is of our application which will manage transaction and projects responsibly. 
+
+
+
+
+for literature 
+
+
+Today we are living in a world where people of various industries doesn't hire employees for works like graphic designing, content writeing, software or application developement, so instead they hire freelancers for this sorts of work. Freelancers are people who pursues a profession without a long-term commitment to any one employer and work individually in a specific project assigned by client.
+
+Frauds happens with freelancers are:-
+	- After project dilevery somtimes clients pay less money than signing amount or no money at all.
+	- Holding advance payments from client and neglecting freelancers.
+Frauds happens with client are:-
+	- After payment freelancers delay project delevery.
+	- Freelancers neglects client after advance payment.

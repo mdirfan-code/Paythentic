@@ -80,6 +80,12 @@
     color: rgb(0, 16, 26);
 }
 
+.proj-link{
+    
+        text-decoration: none;
+    
+}
+
 .create-proj-btn{
     position: fixed;
     padding: 0.5rem;

@@ -1,0 +1,101 @@
+.update-profile-form{
+    
+        position: fixed;
+        top: 0;
+        left: 10%;
+        right: 10%;
+        bottom: 0;
+        z-index: 2;
+        margin: auto;
+        height: 80%;
+        min-width: fit-content;
+        width: 20%;
+      
+        padding: 3rem;
+        border-radius: 2px;
+        background-color: #9dd4ff;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        overflow-y: scroll;
+}
+
+.update-profile-form::-webkit-scrollbar {
+    display: none;
+  }
+
+.line-str{
+    display: inline;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+
+.upper-side{
+    display: flex;
+    gap:2rem;
+}
+
+.save-btn-wrap{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.gender-wrap{
+    display: flex;
+    gap: 10px;
+    justify-content: baseline;
+    align-items: baseline;
+}
+
+.gender-option{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gender-option>span{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.profile-image-edit{
+    width: 10rem;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+}
+
+/* profile pic update */
+
+.profile-pic-picker{
+    padding: 0.5em;
+    background-color: rgb(232, 232, 233);
+    justify-content: center;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+}
+
+.update-photo-btn{
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    justify-self: center;
+    color: rgb(0, 0, 0);
+
+}
+
+
+
+
+
+/* Work on Fonts */
+.update-profile-form>h1{
+    font-size: 2rem;
+    color: rgb(6, 27, 41);
+}

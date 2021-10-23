@@ -1,15 +1,19 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './ProjectList.css';
+import {Link, useLocation}from 'react-router-dom';
 import CreateProjectForm from './CreateProjectForm.js';
 
 export default function ProjectList() {
 
 
-    const ACTIVE_PROJECT = [{'projNo':12,'projName':'Logo creation'},{'projNo':13,'projName':'Web Design'},{'projNo':24,'projName':'Video Editing'},{'projNo':38,'projName':'Content Writing'},{'projNo':92,'projName':'Web Scraping'},{'projNo':45,'projName':'Building E-commerce Website'},{'projNo':80,'projName':'Business Card Design'},{'projNo':66,'projName':'Enhancing Song "falana dhimkana"'}];
+    const ACTIVE_PROJECT = [{'projNo':12,'projName':'Logo creation'},{'projNo':13,'projName':'Web Design'},{'projNo':24,'projName':'Video Editing'},{'projNo':38,'projName':'Content Writing'},{'projNo':93,'projName':'Web Scraping'},{'projNo':47,'projName':'Building E-commerce Website'},{'projNo':86,'projName':'Business Card Design'},{'projNo':67,'projName':'Enhancing Song "falana dhimkana"'}];
     const HISTORY_PROJECT = [{'projNo':92,'projName':'Web Scraping'},{'projNo':45,'projName':'Building E-commerce Website'},{'projNo':80,'projName':'Business Card Design'},{'projNo':66,'projName':'Enhancing Song "falana dhimkana"'}];
     
     const [ isDialBoxVisible, setVisibility] = useState(false)
     const [currentList, setCurrentList] = useState(ACTIVE_PROJECT);
+
+   
+
 
     const setCurrentListHandler = (listToSet) => {
                 setCurrentList(listToSet);        
@@ -25,10 +29,13 @@ export default function ProjectList() {
             <div className="proj-list">
                 {
                   currentList.map(lstItm => (
-                      <div className='proj-slab' key={lstItm.projNo}>
-                          <h5>PRJ#{lstItm.projNo}</h5>
-                          <h2>{lstItm.projName}</h2>
-                      </div>
+                      <Link to={`/mdirfan.code/dashboard/${lstItm.projNo}`} className='proj-link'>
+                          <div className='proj-slab' key={lstItm.projNo}>
+                              <h5>PRJ#{lstItm.projNo}</h5>
+                                <h2>{lstItm.projName}</h2>
+                          </div>
+                          
+                      </Link>
                   ))
                 }
             </div>

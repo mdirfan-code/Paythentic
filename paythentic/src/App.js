@@ -1,18 +1,19 @@
-import './App.css';
-import NavBar from './Components/NavBar';
-import HomePageEntry from './Components/HomePageEntry';
-import Dashboard from './Components/Dashboard';
-import ProjectList from './Components/ProjectList';
-function App() {
-  return (
-    <div>
-     <NavBar userName="mdirfan.code" />
-     <ProjectList/>
-     {/* <Dashboard /> */}
-     
-   
-    </div>
-  );
+
+import AppI from "./AppI";
+ import AppT from "./AppT";
+ import {BrowserRouter, Route} from 'react-router-dom';
+
+export default function App(){
+
+
+
+    return(
+        <BrowserRouter>
+        <Route path='/' exact component={AppT}/>
+     <Route path='/mdirfan.code' component={AppI}/>
+        </BrowserRouter>
+        
+    )
+
 }
 
-export default App;

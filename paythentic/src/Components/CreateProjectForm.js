@@ -1,10 +1,14 @@
 import React from 'react'
 import './CreateProjectForm.css';
+import Icon from '@mdi/react';
+import { mdiClose } from '@mdi/js';
+
 export default function CreateProjectForm() {
     return (<>
        
         <div className="create-proj-form">
-            <h1>Create Project</h1>
+            <div className='top-wrapper'><h1>Create Project</h1></div>
+            <div className='line-str'></div>
             <form method='GET'>
                 <h3>Project Name</h3>
                 <input type='text' placeholder='Enter Project Name'/>

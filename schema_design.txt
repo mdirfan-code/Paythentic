@@ -1,0 +1,80 @@
+-Admin
+   -username*
+   -password*
+   -roles*
+   -privileges*
+   -fullname
+   
+
+
+-User
+   -username*
+   -password*
+   -currenttype*
+   -email*
+   -linkedin
+   -skills
+   -expirence
+   -account no. or UPI ID*
+   -IFSC Code*
+   -profile pic url
+
+-messages
+   - project number*
+   - delivered time
+   - seen time
+   - date*
+   - message in encrypted form
+   - reciver username
+   - sender username
+
+-payment
+   - amount paid
+   - amount due
+   - total amount
+   - transaction IDs
+
+-transaction
+   - transaction ID
+   - datetime
+   - amount
+   - from 
+   - to
+
+	
+-project
+   - proj number
+   - project name
+   - project descreption
+   - freelancer's username
+   - client username
+   - due date
+   - Project files or attachments
+   - status
+   - signing amount
+   - isCompleted
+
+-Report
+   - report by
+   - reported user
+   - fraud description
+   - date
+   - isReviewed
+
+
+
+ -------------------------------------
+fiverr
+1.
+- enter Email
+2.
+-choose username
+-choose password
+check if username already exist
+----------------------------------
+Processs
+1. login/signUp
+2. contactUs
+3. Logout
+
+
