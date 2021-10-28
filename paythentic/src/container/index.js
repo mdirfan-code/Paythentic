@@ -6,16 +6,18 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Login from '../componentsT/pages/Login'
 import Signup from '../componentsT/pages/SignUp' 
+import useStyles from '../componentsT/pages/MaterialUIStyle';
 
 const LogInOutContainer=()=>{
 const [value,setValue]=useState(0)
+const classes= useStyles();
 const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const paperStyle={width:380,margin:"20px auto",justifyContent: 'stretch'}
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+    
+    
     return (
       <div
         role="tabpanel"
@@ -35,28 +37,26 @@ const handleChange = (event, newValue) => {
   
     return (
       <div className='login'>
-      <Paper elevation={20} style={paperStyle}>
-      <Tabs
-        className='log-sign-btn-wrap'
-        value={value}
-        indicatorColor="primary"
-        textColor="primary"
-        onChange={handleChange}
-        aria-label="disabled tabs example"
+      <Paper  className={classes.paperStyleIndex}>
+        <Tabs
+          className='log-sign-btn-wrap'
+          value={value}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={handleChange}
+          aria-label="disabled tabs example"
 
+        >
+          <Tab label="Log In" />
         
-
-      >
-        <Tab label="Log In" />
-       
-        <Tab label="Sign Up" />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-     <Login handleChange={handleChange}/>
-    </TabPanel>
-    <TabPanel value={value} index={1}>
-    <Signup/>
-    </TabPanel>
+          <Tab label="Sign Up" />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+      <Login handleChange={handleChange}/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+      <Signup/>
+      </TabPanel>
     </Paper>
     </div>
         

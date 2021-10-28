@@ -10,6 +10,9 @@ const mongoSanitize = require('express-mongo-sanitize');
 // app.use(bodyParser.json());
 
 // To remove data, use:
+const {
+  verifyAccessToken
+} = require('./Helpers/JWT_methods.help')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -31,9 +34,12 @@ const usersRouter = require('./Routes/Authentication');
 const dashboardRouter = require('./Routes/Dashboard');
 const projectRouter = require('./Routes/Project')
 
-app.use('/',usersRouter)
-app.use('/dash/',dashboardRouter)
+
+
+app.use('/auth/',usersRouter)
+app.use('/dash/',verifyAccessToken ,dashboardRouter)
 app.use('/project/',projectRouter)
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

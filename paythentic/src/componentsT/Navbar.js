@@ -31,15 +31,15 @@ function Navbar() {
               </div>
             </li>
             <li className='nav-item'>
-            <Link
-              to='/contact-us'
+            <a
+              href='#test'
               className='nav-links'
-              onClick={closeMobileMenu}
+              // onClick={closeMobileMenu}
             >
               Contact Us
-            </Link>
+            </a>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
             <Link
               to='/login'
               className='nav-links'
@@ -47,7 +47,7 @@ function Navbar() {
             >
               Log in
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </>

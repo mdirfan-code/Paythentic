@@ -14,6 +14,12 @@ const reportsSchema = new Schema(
             trim: true,
             minlength: 5
          },
+         reportType:{
+            type: String,
+            required: true,
+            trim: true,
+            enum:['Fraud','Technical']
+         },
          reportedUser:{
             type: String,
             required: true,

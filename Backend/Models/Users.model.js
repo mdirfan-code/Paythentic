@@ -49,6 +49,11 @@ const userSchema = new Schema(
         skills:{
             type:Array
         },
+        isVerified:{
+            type: Boolean,
+            default: false
+        },
+
         // connectionRequest:[{
         //     From:{
         //         type: String,

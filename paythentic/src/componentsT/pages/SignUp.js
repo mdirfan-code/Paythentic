@@ -1,5 +1,5 @@
-import React from 'react'
-import { Grid, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core'
+import React,{useState,useEffect} from 'react'
+import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -7,40 +7,191 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import useStyles from './MaterialUIStyle';
+import {useForm,Form} from '../useForm';
+import Input from '../control/Input';
+
+
 const Signup = () => {
-    const paperStyle = { padding: 20, width: 340, margin: "0 auto" }
-    const headerStyle = { margin: 0 }
-    const avatarStyle = { backgroundColor: '#107869' }
+    
     const marginTop = { marginTop: 15 }
+    const classes= useStyles();
+
+    const validate = (fieldValues=values) => {
+        let temp = {...errors}
+        if ('fullName' in fieldValues)
+            temp.fullName=fieldValues.fullName?"":"This field is required."
+        if ('email' in fieldValues)
+            temp.email = (/.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
+        if ('phno' in fieldValues)    
+            temp.phno=(fieldValues.phno.length===10)&& (/^[1-9][0-9]*$/).test(fieldValues.phno) ?"" : "Phone Number is not valid.."
+        if ('password' in fieldValues)
+            // temp.password=(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,50})/).test(fieldValues.password)?"":"Password must contain 1 Uppercase"
+            // {
+            //     let password=fieldValues.password
+            //     console.log(password)
+            //     const arr =[password.length >= 8 ,(/^(?=.*[a-z])/).test(password),(/^(?=.*[A-Z])/).test(password),(/^(?=.*[0-9])/).test(password),(/^(?=.*[~`!@#$%^&*()-_+={}[]|\;:"<>,.?])/).test(password)]
+            // }
+            {
+                let password=fieldValues.password
+                // const isPasswordTrue = (password) => (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,50})/).test(fieldValues.password)       
+                if(password.length >= 8 ){
+                    if(((/^(?=.*[a-z])/).test(password))){
+                        if((/^(?=.*[A-Z])/).test(password)){
+                            if((/^(?=.*[0-9])/).test(password)){
+                                if((/^(?=.*[~`\!@#\$%^&\*\(\)\-_\+\=\{\}\[\]\|\;\:\"\<\>\,.\/\?])/).test(password)){
+                                    temp.password=""
+                                }else{
+                                    temp.password = "Passwords must contain at least 1 special character Eg:@,#,etc"
+                                }
+                            }else{
+                                temp.password = "Passwords must contain at least 1 numeric character"
+                            }
+                        }else{
+                            temp.password = "Passwords must contain at least 1 uppercase letter"
+                        }
+                    }else{
+                        temp.password = "Passwords must contain at least 1 lowercase letter"
+                    }        
+                }else{
+                    temp.password = "Passwords must be at least 8 characters in length."
+                }
+            }
+        if ('cpassword' in fieldValues)
+            temp.cpassword=(fieldValues.password===fieldValues.cpassword)?"":"Password not matching."
+        setErrors({
+            ...temp
+        })
+        if(fieldValues==values)
+            return Object.values(temp).every(x => x === "")
+    }
+
+    
+    
+    
+    const initialFValues={
+        fullName: '',
+        email: '',
+        role:'employer',
+        phno: '',
+        password:'',
+        cpassword:'',
+    }
+    
+    const{
+        values,
+        setValues,
+        errors,
+        setErrors,
+        handleInputChange   
+    }=useForm(initialFValues,true,validate);
+
+    const handleSubmit = e =>{
+        e.preventDefault()
+        if(validate())
+        window.alert('testing...')
+    }
+    
     return (
         <Grid>
-            <Paper style={paperStyle}>
+            <Paper className={classes.paperStyle}>
                 <Grid align='center'>
-                    <Avatar style={avatarStyle}>
+                    <Avatar className={classes.icon}>
                         <AddCircleOutlineOutlinedIcon />
                     </Avatar>
-                    <h2 style={headerStyle}>Sign Up</h2>
+                    <h2>Sign Up</h2>
                     <Typography variant='caption' gutterBottom>Please fill this form to create an account !</Typography>
                 </Grid>
-                <form>
-                    <TextField fullWidth label='Full Name' placeholder="Enter your name" />
-                    <TextField fullWidth label='Email' placeholder="Enter your email" />
+                <Form onSubmit={handleSubmit}>
+                    <Input
+                        fullWidth 
+                        label='Full Name'
+                        name='fullName'
+                        type='text'
+                        value={values.fullName} 
+                        placeholder="Enter your name"
+                        onChange={handleInputChange} 
+                        error={errors.fullName}
+                    />
+                    
+                    <Input 
+                        fullWidth 
+                        label='Email'
+                        name='email'
+                        type='email' 
+                        value={values.email} 
+                        placeholder="Enter your email"
+                        onChange={handleInputChange}
+                        error={errors.email}
+                    />
+                    
                     <FormControl component="fieldset" style={marginTop}>
                         <FormLabel component="legend">Role</FormLabel>
-                        <RadioGroup aria-label="role" name="role"  style={{display : 'initial'}}>
-                            <FormControlLabel value="freelancer" control={<Radio style={{color:'#107869'}}/>} label="Freelancer" />
-                            <FormControlLabel value="employer" control={<Radio style={{color:'#107869'}}/>} label="Employer" />
+                        <RadioGroup 
+                            aria-label="role" 
+                            name="role"  
+                            style={{display : 'initial'}}
+                            value={values.role}
+                            onChange={handleInputChange}
+                        >
+                            <FormControlLabel 
+                                value="employer" 
+                                control={<Radio />} 
+                                label="Employer" 
+                            />
+                            <FormControlLabel    
+                                value="freelancer" 
+                                control={<Radio />} 
+                                label="Freelancer" 
+                            />
+                            
                         </RadioGroup>
                     </FormControl>
-                    <TextField fullWidth label='Phone Number' placeholder="Enter your phone number" />
-                    <TextField fullWidth label='Password' placeholder="Enter your password"/>
-                    <TextField fullWidth label='Confirm Password' placeholder="Confirm your password"/>
+                    <Input 
+                        fullWidth 
+                        label='Phone Number'
+                        name='phno'
+                        value={values.phno} 
+                        type='tel' 
+                        placeholder="Enter your phone number"
+                        onChange={handleInputChange} 
+                        error={errors.phno}
+                    />
+                    
+                    <Input  
+                        fullWidth 
+                        label='Password'
+                        name='password' 
+                        value={values.password}
+                        type='password' 
+                        placeholder="Enter your password"
+                        onChange={handleInputChange}
+                        error={errors.password}
+                    />
+                    
+                    <Input  
+                        fullWidth 
+                        label='Confirm Password'
+                        name='cpassword' 
+                        value={values.cpassword}
+                        type='password' 
+                        placeholder="Confirm your password"
+                        onChange={handleInputChange}
+                        error={errors.cpassword}
+                    />
+                    
                     <FormControlLabel
-                        control={<Checkbox name="checkedA" style={{color:'#107869'}}/>}
+                        control={<Checkbox name="checkedA" />}
                         label="I accept the terms and conditions."
                     />
-                    <Button type='submit' variant='contained' color='primary' style={{backgroundColor:'#107869'}}>Sign up</Button>
-                </form>
+                    <Button 
+                        type='submit' 
+                        variant='contained' 
+                        color='primary' 
+                    >
+                        Sign up
+                    </Button>
+                </Form>
             </Paper>
         </Grid>
     )

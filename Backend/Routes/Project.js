@@ -7,6 +7,10 @@ require('dotenv').config();
 const Project = require('../Models/Projects.model')
 
 const express = require('express')
+const multer = require('multer');
+
+
+const {uploadS3} = require('../Helpers/aws_buckect.help')
 
 var sanitize = require('mongo-sanitize');
 // const { getProjectById} = require('../Helpers/projects_methods.help')
@@ -70,8 +74,26 @@ router.route('/payment').post((req,res) => {
 })
 
 // upload Files
-router.route('/upload').post((req,res) => {
-  
+router.post('/upload',uploadS3.array, (req,res) => {
+  const { projId } = req.header;
+  console.log("projId ",projId)
+  let files= [];
+
+  if (req.files.length > 0) {
+    files = req.files.map((file) => {
+      return { file: file.location };
+    });
+  }
+  console.log("thisidnnd",projId)
+
+
+
+  Project.findOneAndUpdate({"_id":projId},{"$set":{"projectFiles":files}},(error, product) => {
+    if (error) return res.status(400).json({ error });
+    if (product) {
+      res.status(201).json({ product, files: req.files });
+    }
+  });
 })
 
 

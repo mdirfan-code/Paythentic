@@ -28,10 +28,11 @@ const changeType = (curtype)=>{
 
 // Active Project
 
-router.route('/:username/').get( async (req,res) => {
-    const uname = sanitize(req.params.username)
-    console.log(req.params)
-    await User.findOne({"username":uname})
+router.route('/').get( async (req,res) => {
+    
+
+    console.log("asddfadsf",req.payload.aud)
+    await User.findOne({ "_id":req.payload.aud})
     .then(async (profile) =>{
             console.log(profile)
             const activeProjects = profile.activeProjects[userTypes[profile.currentUserType]]
@@ -65,10 +66,10 @@ router.route('/:username/').get( async (req,res) => {
 }) 
 
 // History Project
-router.route('/:username/history').get(async (req,res) => {
-    const uname = sanitize(req.params.username)
-    console.log(req.params)
-    await User.findOne({"username":uname})
+router.route('/history').get(async (req,res) => {
+ 
+    
+    await User.findOne({"_id":req.payload.aud})
     .then(async (profile) =>{
             console.log(profile)
             const historyProjects = profile.historyProjects[userTypes[profile.currentUserType]]
