@@ -48,7 +48,7 @@
   margin: 1rem;
   margin-right: 2rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
   position: relative;
   top: 4rem;
   
@@ -70,7 +70,7 @@
 .login-form{
   display: flex;
   justify-content: baseline;
-  align-items: baseline;
+  align-items: center;
   margin: 4rem;
 }
 

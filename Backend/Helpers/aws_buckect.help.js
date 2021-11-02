@@ -23,6 +23,7 @@ exports.uploadS3 = multer({
     bucket: "paythentic-project-files",
     acl: "public-read",
     metadata: function (req, file, cb) {
+      console.log(file)
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
@@ -30,3 +31,10 @@ exports.uploadS3 = multer({
     },
   }),
 });
+
+exports.isFileCame = (req,res) =>{
+    console.log(req.file)
+    if(req.file)
+    res.status(200).json({"files":req.file})
+    res.status(200).json({"message":"not getting any files"})
+} 

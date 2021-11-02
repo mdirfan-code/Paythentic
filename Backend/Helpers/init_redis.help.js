@@ -11,6 +11,7 @@ client.on('connect', () => {
 
 client.on('ready', () => {
   console.log('Client connected to redis and ready to use...')
+  
 })
 
 

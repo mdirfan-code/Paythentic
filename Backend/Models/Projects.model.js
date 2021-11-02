@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const projectsSchema = new Schema(
     {
-        
+       
           projectName:
           {
               type: String,
@@ -35,10 +35,10 @@ const projectsSchema = new Schema(
             
         
         },
-        projectFiles:{
-            type:Array
-
-        },
+        projectFiles:[{
+            type: Schema.Types.ObjectId,
+            ref:'ProjectFile'
+        }],
         status:{
             type: String,
             enum:['Initial','Building','Uploaded','Review'],

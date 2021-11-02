@@ -58,7 +58,7 @@ module.exports = {
           reject(createError.InternalServerError())
         }
 
-        client.SET(userId, token, 'EX', 365 * 24 * 60 * 60, (err, reply) => {
+        client.SET(userId[0], token, 'EX', 365 * 24 * 60 * 60, (err, reply) => {
           if (err) {
             console.log(err.message)
             reject(createError.InternalServerError())
@@ -77,7 +77,7 @@ module.exports = {
         (err, payload) => {
           if (err) return reject(createError.Unauthorized())
           const userId = payload.aud
-          client.GET(userId, (err, result) => {
+          client.GET(userId[0], (err, result) => {
             if (err) {
               console.log(err.message)
               reject(createError.InternalServerError())

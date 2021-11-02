@@ -11,11 +11,15 @@ import useStyles from './MaterialUIStyle';
 import {useForm,Form} from '../useForm';
 import Input from '../control/Input';
 
+const axios = require('axios');
+
 
 const Signup = () => {
     
     const marginTop = { marginTop: 15 }
     const classes= useStyles();
+
+    const makeUsername = (email) => email.slice(0,email.indexOf('@'))
 
     const validate = (fieldValues=values) => {
         let temp = {...errors}
@@ -58,7 +62,11 @@ const Signup = () => {
                 }
             }
         if ('cpassword' in fieldValues)
-            temp.cpassword=(fieldValues.password===fieldValues.cpassword)?"":"Password not matching."
+            {   
+                temp.cpassword=(fieldValues.password===fieldValues.cpassword)?"":"Password not matching."
+                console.log(temp.cpassword," :: ",fieldValues.password," :: ",fieldValues.cpassword)
+
+            }
         setErrors({
             ...temp
         })
@@ -72,7 +80,7 @@ const Signup = () => {
     const initialFValues={
         fullName: '',
         email: '',
-        role:'employer',
+        role:'Client',
         phno: '',
         password:'',
         cpassword:'',
@@ -88,8 +96,24 @@ const Signup = () => {
 
     const handleSubmit = e =>{
         e.preventDefault()
-        if(validate())
-        window.alert('testing...')
+        if(validate()){
+            axios.post('http://localhost:5000/auth/signup', {
+                username: makeUsername(values.email),
+                fullName: values.fullName,
+                emailId: values.email,
+                currentUserType: values.role,
+                password: values.cpassword
+                
+              })
+              .then(function (response) {
+                  window.alert(response.data.message)
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        }
+        
     }
     
     return (
@@ -135,12 +159,12 @@ const Signup = () => {
                             onChange={handleInputChange}
                         >
                             <FormControlLabel 
-                                value="employer" 
+                                value="Client" 
                                 control={<Radio />} 
                                 label="Employer" 
                             />
                             <FormControlLabel    
-                                value="freelancer" 
+                                value="Freelancer" 
                                 control={<Radio />} 
                                 label="Freelancer" 
                             />

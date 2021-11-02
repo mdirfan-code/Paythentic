@@ -51,13 +51,13 @@ router.route('/signup').post( async (req,res) => {
                             if (err) { return res.status(500).json({ msg: err}); }
 
                             
-                            res.status(200).send('A verification email has been sent to ' + user.emailId + '.');
+                            res.status(200).json({success:1,message:'A verification email has been sent to ' + user.emailId + '.'});
                         });
                     });
                     if(user.isVerified)
-                       { const accessToken = await signAccessToken(user.id)
+                       { const accessToken = await signAccessToken([user.id,user.username])
                         console.log(accessToken)
-                        const refreshToken = await signRefreshToken(user.id)
+                        const refreshToken = await signRefreshToken([user.id,user.username])
                         
                         console.log(refreshToken)
                         res.status(200).json({
@@ -103,24 +103,28 @@ router.route('/signup').post( async (req,res) => {
 
 router.route('/login').post( async (req,res) => {
     const curUser = {username: req.body.username, pass:req.body.password}
-    setInterval(client.ping(), 1000 * 60 * 30);
-
+    //await setInterval(client.ping(), 1000 * 60 * 30);
+    console.log("reached log in")
     await User.findOne(
         {username: curUser.username}
     )
     .then(async (profile) => {
+       
         
         if(!profile){
             res.status(404).json({success: 0, message:"User not found"})
         }
         else{
             if(await profile.isValidPassword(curUser.pass)){
+             
 
                 if (!profile.isVerified) 
                 return res.status(401).send({ type: 'not-verified', msg: 'Your account has not been verified.' });
-
-                const accessToken = await signAccessToken(profile.id)
-                const refreshToken = await signRefreshToken(profile.id)
+                console.log("passed validation")
+                const accessToken = await signAccessToken([profile.id,profile.username])
+                console.log("accessToken ",accessToken )
+                const refreshToken = await signRefreshToken([profile.id,profile.username])
+                console.log("refreshToken ",refreshToken )
                 res.status(200).json({
                     success: 1,
                     accessToken: accessToken,

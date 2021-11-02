@@ -5,11 +5,7 @@ const Schema = mongoose.Schema;
 const paymentsSchema = new Schema(
     {
         projectId: {
-            type: String,
-            required: true,
-            unique: true,
-            trim: true,
-            minlength: 5
+            type: Schema.Types.ObjectId, ref: 'Project'
           },
          advanceAmount:{
              type: Schema.Types.Decimal128

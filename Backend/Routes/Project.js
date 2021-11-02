@@ -1,16 +1,19 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
-
-
-
-const Project = require('../Models/Projects.model')
-
 const express = require('express')
 const multer = require('multer');
 
 
-const {uploadS3} = require('../Helpers/aws_buckect.help')
+
+
+const Project = require('../Models/Projects.model')
+const ProjectFile = require('../Models/ProjectFiles.model')
+
+
+
+
+const {uploadS3, isFileCame} = require('../Helpers/aws_buckect.help')
 
 var sanitize = require('mongo-sanitize');
 // const { getProjectById} = require('../Helpers/projects_methods.help')
@@ -74,9 +77,11 @@ router.route('/payment').post((req,res) => {
 })
 
 // upload Files
-router.post('/upload',uploadS3.array, (req,res) => {
-  const { projId } = req.header;
-  console.log("projId ",projId)
+router.route('/upload/:projid').post( uploadS3.array("projectFiles",1),  async (req,res) => {
+  const {projid}  = req.params;
+  console.log("projId ",projid)
+
+
   let files= [];
 
   if (req.files.length > 0) {
@@ -84,16 +89,48 @@ router.post('/upload',uploadS3.array, (req,res) => {
       return { file: file.location };
     });
   }
-  console.log("thisidnnd",projId)
+  console.log("thisidnnd",projid)
+
+  const newFiles = new ProjectFile({"projectId":projid, "projectFiles":files})
+
+ 
 
 
-
-  Project.findOneAndUpdate({"_id":projId},{"$set":{"projectFiles":files}},(error, product) => {
+  newFiles.save(async (error, projectFiles) => {
     if (error) return res.status(400).json({ error });
-    if (product) {
-      res.status(201).json({ product, files: req.files });
+    if (projectFiles) {
+
+      res.status(201).json({ projectFiles, files: req.files });
     }
   });
+});
+
+
+router.route('/fetch/:projid').get(async (req,res) => {
+  const {projid}  = req.params;
+
+
+
+  await ProjectFile.findOne({"projectId":projid})
+  .then(
+    (files) =>{
+
+      res.status(200).json({
+        success:1,
+        files: files
+      })
+      
+    }
+  )
+  .catch((err)=> {
+    res.status(200).json({
+      success:0,
+      error: err
+    })
+  })
+
+
+
 })
 
 

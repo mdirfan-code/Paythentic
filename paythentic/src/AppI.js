@@ -14,8 +14,8 @@ function AppI() {
       <BrowserRouter>
      <NavBar userName="mdirfan.code" />
      {/* <Dashboard /> */}
-     <Route path='/' exact component={ProjectList}/>
-     <Route path='/mdirfan.code/dashboard/:prjId' component={Dashboard}/>
+     <Route path='/dash' exact component={ProjectList}/>
+     <Route path='/project/:prjId' component={Dashboard}/>
      <Route path='/mdirfan.code/ReportUser'/>
 
      </BrowserRouter>

@@ -54,23 +54,23 @@ const userSchema = new Schema(
             default: false
         },
 
-        // connectionRequest:[{
-        //     From:{
-        //         type: String,
-        //         unique: true,
-        //         ref: 'User'
-        //     },
-        //     date: {
-        //         type: Date,
-        //         default: Date.now()
-        //     },
-        //     status:{
-        //         type: String,
-        //         enum:['rejected','accepted','unresolve'],
-        //         default: 'unresolve'
-        //     }
+        connectionRequest:[{
+            From:{
+                type: String,
+                unique: true,
+                ref: 'User'
+            },
+            date: {
+                type: Date,
+                default: Date.now()
+            },
+            status:{
+                type: String,
+                enum:['rejected','accepted','unresolve'],
+                default: 'unresolve'
+            }
             
-        // }],
+        }],
         connectedUsers:[{ type: Schema.Types.ObjectId, ref: 'User'}],
         expirience:[{
             designation: String,
