@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
+
 
 require('dotenv').config();
 var fs = require('fs');
@@ -18,8 +18,7 @@ const {
 const app = express();
 const port = process.env.PORT || 5000;
 
-// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000}));
-// app.use(bodyParser.json({limit:"50mb"}));
+
 app.use(mongoSanitize());
 app.use(cors());
 app.use(express.json());
@@ -37,10 +36,12 @@ db.once('open', () => {
 const usersRouter = require('./Routes/Authentication');
 const dashboardRouter = require('./Routes/Dashboard');
 const projectRouter = require('./Routes/Project')
+const searchRouter = require('./Routes/Search')
 
 
 
 app.use('/auth/', usersRouter)
+app.use('/search/',searchRouter)
 app.use('/dash/', verifyAccessToken ,dashboardRouter)
 app.use('/project/', verifyAccessToken ,projectRouter)
 

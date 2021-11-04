@@ -9,7 +9,7 @@ const multer = require('multer');
 
 const Project = require('../Models/Projects.model')
 const ProjectFile = require('../Models/ProjectFiles.model')
-
+const Payment = require('../Models/Payment.model')
 
 
 

@@ -5,13 +5,13 @@ const client = redis.createClient({
   host: '127.0.0.1',
 })
 
-client.on('connect', () => {
+client.on('connect', async () => {
   console.log('Client connected to redis...')
+  
 })
 
 client.on('ready', () => {
   console.log('Client connected to redis and ready to use...')
-  
 })
 
 
@@ -24,7 +24,18 @@ client.on('end', () => {
   console.log('Client disconnected from redis')
 })
 
-process.on('SIGINT', () => {
+// if (process.platform === "win32") {
+//   var rl = require("readline").createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   });
+
+//   rl.on("SIGINT", function () {
+//     process.emit("SIGINT");
+//   });
+// }
+
+process.on('exit', () => {
   client.quit()
 })
 

@@ -72,7 +72,7 @@ const userSchema = new Schema(
             
         }],
         connectedUsers:[{ type: Schema.Types.ObjectId, ref: 'User'}],
-        expirience:[{
+        experience:[{
             designation: String,
             dateFrom:  String,
             dateTo: String,

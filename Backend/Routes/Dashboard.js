@@ -10,6 +10,10 @@ require('dotenv').config();
 const User = require('../Models/Users.model')
 const Project = require('../Models/Projects.model')
 
+const {
+    extractRequest
+} = require('../Helpers/filter_doc.help')
+
 
 // const { getProjectById} = require('../Helpers/projects_methods.help')
 
@@ -157,8 +161,8 @@ router.route('/createProject').post(async (req,res) => {
 })
 
 // view Your Profile
-router.route('/:username/YourProfile').get( async (req,res) => {
-    const uname = sanitize(req.params.username)
+router.route('/YourProfile').get( async (req,res) => {
+    const uname = req.payload.aud[1]
 
     await User.findOne({username:uname},{accountNo:0,password:0,ifscCode:0,historyProjects:0,activeProjects:0})
     .then((profile) => {
@@ -185,14 +189,53 @@ router.route('/:username/YourProfile').get( async (req,res) => {
 })
 
 // Update Profile
-router.route('/UpdateProfile').put((req,res) => {
+router.route('/UpdateProfile').put( async (req,res) => {
+    const uname = req.payload.aud[1]
+    var elementsCanUpdate = {"fullName":"","contactNo":"","accountNo":"","skills":"","experience":"","ifscCode":"","profilePicUrl":""}
+    let newContent = sanitize(req.body)
+    console.log(newContent)
+    let updation = {}
+    for(var key in newContent)
+    {
+        if(!(key in elementsCanUpdate)) 
+        {
+           
+            delete newContent[key]
+        }
+       
+    }
+    console.log("after filtering")
+    console.log(newContent)
 
+
+
+    await User.findOneAndUpdate({username:uname},{"$set":newContent})
+    .then((user)=>{
+        res.status(200).json({
+            success:1,
+            message:"Profile got Update"
+        })
+    })
+    .catch((err)=>{
+        res.status(500).json({
+            success:0,
+            message:"something went wrong",
+            error: err
+        })
+    })
+
+
+
+
+
+   
 
 })
 
 // change User Type
-router.route('/:username/usertype').put( async (req,res) => {
-    const uname = sanitize(req.params.username)
+router.route('/usertype').put( async (req,res) => {
+    const uname = req.payload.aud[1]
+    console.log(uname)
 
     await User.findOne({username:uname})
     .then(async (profile) =>{
@@ -234,11 +277,12 @@ router.route('/:username/usertype').put( async (req,res) => {
 
 // connection request send
 router.route('/connect').post( async (req,res) => {
-    let info = sanitize(req.body)
+    let {requestReciever} = sanitize(req.body)
+    let uname = req.payload.aud[1]
      
-    console.log(info)
+  
 
-    await User.findOneAndUpdate({username:info.to},{$push:{"connectionRequest" :{"From":info.from}}})
+    await User.findOneAndUpdate({username:requestReciever},{$push:{"connectionRequest" :{"From":uname}}})
     .then((profile)=>{
         console.log(profile)
         res.status(200).json({
@@ -259,11 +303,13 @@ router.route('/connect').post( async (req,res) => {
 })
 
 // view all connection requests
-router.route('/:username/connectionRequests').get( async(req,res) => {
-        let uname = sanitize(req.params.username)
+router.route('/connectionRequests').get( async(req,res) => {
+        let uname = req.payload.aud[1]
 
-        await User.find({username:uname,"connectionRequest.status":'unresolve'})
-        .then((requests)=>{
+        await User.find({username:uname})
+        .then((user)=>{
+            let requests = extractRequest(user)
+
             res.status(200).json({
                 success:1,
                 requests:requests
@@ -272,6 +318,7 @@ router.route('/:username/connectionRequests').get( async(req,res) => {
         }
         )
         .catch((err) => {
+            console.log(err)
             res.status(500).json({
                 success:0,
                 message:"something went wrong",
@@ -285,7 +332,32 @@ router.route('/:username/connectionRequests').get( async(req,res) => {
 })
 
 // action on connection request
-router.route('/action').post((req,res) => {
+router.route('/action').post(async (req,res) => {
+    let uname = req.payload.aud[1]
+
+    if(req.body.action == "accept")
+    {
+    await User.findOneAndUpdate({username:uname})
+        .then((user)=>{
+           
+
+            res.status(200).json({
+                success:1,
+                requests:requests
+
+            })
+        }
+        )
+        .catch((err) => {
+            console.log(err)
+            res.status(500).json({
+                success:0,
+                message:"something went wrong",
+                error: err
+            })
+        })
+    }
+    
 
 })
 
