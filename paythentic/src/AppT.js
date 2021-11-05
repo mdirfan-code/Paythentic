@@ -9,14 +9,16 @@ import ContactUs from './componentsT/pages/ContactUs'
 
 
 function AppT() {
+
+  
     return (
       <Router>
       <Navbart />
       
       <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/contact-us' exact component={ContactUs} />
-        <Route path='/login' component={LogInOutContainer} />
+        <Route path='/home' exact component={Home} />
+        {/* <Route path='/contact-us' exact component={ContactUs} /> */}
+        {/* <Route path='/login' component={LogInOutContainer} /> */}
       </Switch>
     </Router>
         

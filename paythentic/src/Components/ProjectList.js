@@ -1,7 +1,9 @@
 import React,{useState, useEffect} from 'react'
 import './ProjectList.css';
+import Navbar from './NavBar'
 import {Link, useLocation}from 'react-router-dom';
 import CreateProjectForm from './CreateProjectForm.js';
+
 
 export default function ProjectList() {
 
@@ -22,6 +24,7 @@ export default function ProjectList() {
 
 
     return (<>
+     <Navbar />
      {isDialBoxVisible && <div className='OnBG' onClick={() => setVisibility(!isDialBoxVisible)}></div>}
         <div className="bg-DshBrd">
             <span className="title-wrap"><h1 className='title-your-proj'>Your Projects</h1></span>

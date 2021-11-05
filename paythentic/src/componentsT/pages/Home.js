@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../App.css';
+import Navbart from '../Navbar'
 import LogInOutContainer from '../../container'; 
 import ContactUs from './ContactUs';
 
 export default function Home() {
   return (<>
+      <Navbart />
       <div className='bgimage'></div>
      <div className='home'>
       <div className='home-wrapper'>

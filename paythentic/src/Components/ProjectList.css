@@ -1,6 +1,9 @@
 .bg-DshBrd{
     position:fixed;
-    background-image: linear-gradient(70deg,#0E86D4  40%, #055C9D) ;
+    background-image: url('https://source.unsplash.com/_nWaeTF6qo0/1600');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     top:0;
     height: 100%;
     width: 100%;
@@ -10,7 +13,7 @@
 
 .title-your-proj{
     font-family: 'Kaisei HarunoUmi', serif;
-    color: #d3f0ff;
+    color: #ffffff;
 
     
 }
@@ -23,24 +26,25 @@
       position: fixed;
       display: flex;
       padding: 1rem;
-      top:8.5rem;
+      top:9rem;
       left: 0;
       right: 0;
-      background-color: rgb(0, 16, 26);
+      background-color: rgba(0, 11, 19, 0.534);
       justify-content: space-around;
 }
 
 .title-wrap{
       display: flex;
       position: fixed;
-      background-color:  rgb(0, 16, 26);
+      top:4.8rem;
+      background-color:  rgba(0, 11, 19, 0.534);
        left: 0;
        right: 0;
       justify-content: center;
 }
 
 .proj-btn{
-    background-color: #bbe7ff;
+    background-color: #ccd1ff;
     border: none;
     border-radius: 5px;
     width: 49.9%;
@@ -53,9 +57,9 @@
 } 
 .proj-btn:hover{
     background-color: rgb(0, 16, 26);
-    color: #bbe7ff;
-    -webkit-text-fill-color: #bbe7ff;
-    border: 1px solid  #bbe7ff ;
+    color: #ccd1ff;
+    -webkit-text-fill-color: #ccd1ff;
+    border: 1px solid  #ccd1ff ;
 }
 
 .proj-list{
@@ -70,14 +74,16 @@
 .proj-slab{
     padding: 1rem;
     
-    color: #6cbbf8;
-    background-color: rgb(0, 16, 26);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.20);
     margin: 0.5rem;
     border-radius: 5px;
+    backdrop-filter: blur(5px);
 }
 .proj-slab:hover{
-    background-color: #6cbbf8;
+    background-color: rgba(255, 255, 255, 0.507);
     color: rgb(0, 16, 26);
+    backdrop-filter: blur(5px);
 }
 
 .proj-link{

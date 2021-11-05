@@ -1,7 +1,9 @@
 .bg-DshBrd{
     position:fixed;
- 
-    background-image: linear-gradient(70deg,#0E86D4  40%, #055C9D) ;
+    background-image: url('https://source.unsplash.com/FewHpO4VC9Y/1600');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     top:0;
    height: 100%;
    width: 100%;

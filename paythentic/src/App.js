@@ -1,7 +1,16 @@
 
-import AppI from "./AppI";
- import AppT from "./AppT";
- import {BrowserRouter, Route} from 'react-router-dom';
+import React from 'react';
+import Navbart from './componentsT/Navbar';
+import './AppT.css';
+import './AppTr.css';
+import Home from './componentsT/pages/Home';
+// import AppI from "./AppI";
+//  import AppT from "./AppT";
+ import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+import HomePageEntry from './Components/HomePageEntry';
+import Dashboard from './Components/Dashboard';
+import ProjectList from './Components/ProjectList';
 
 export default function App(){
 
@@ -9,8 +18,10 @@ export default function App(){
 
     return(
         <BrowserRouter>
-        <Route path='/' exact component={AppT}/>
-     <Route path='/mdirfan.code' component={AppI}/>
+        <Switch>
+            <Route path='/dash' exact component={ProjectList}/>
+            <Route path='/home' component={Home}/>
+        </Switch>
         </BrowserRouter>
         
     )

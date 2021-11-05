@@ -10,7 +10,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background:rgb(6, 27, 41);
+    background:rgba(0, 11, 19, 0.534);
 }
 h1{
     color: white;

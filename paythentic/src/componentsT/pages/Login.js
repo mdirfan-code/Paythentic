@@ -1,5 +1,6 @@
 import '../../App.css';
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import { Grid,Paper, Avatar, TextField, Button, Typography,Link} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,10 +21,16 @@ const Login=({handleChange})=>{
     }
 
     const [values,setValues] = useState(initialFValues);
+    const [redirect, setRedirect] = useState(false)
+
+    useEffect(()=>{
+        return
+       
+    },[redirect])
 
     const handleInputChange = e =>{
         const {name,value} = e.target
-        console.log(values,'::',name,'::',value)
+        //console.log(values,'::',name,'::',value)
         setValues({
             ...values,
             [name]:value
@@ -45,18 +52,36 @@ const Login=({handleChange})=>{
                 
               })
               .then(function (response) {
-                  window.alert(response.data.message)
-                  localStorage.setItem("accessToken",response.data.accessToken)
-                  localStorage.setItem("refreshToken",response.data.refreshToken)
+                   if(response.data.success)     
+                  {
+                    console.log("passed")
+
+                    localStorage.setItem("accessToken",response.data.accessToken)
+                    console.log("passed access")
+                    localStorage.setItem("refreshToken",response.data.refreshToken)
+                    console.log("passed refresh")
+                    setRedirect(true)
+                    
+                    
+                }
+                  else{
+                    window.alert(response.data.message)
+                  }
+                  
                 console.log(response);
               })
               .catch(function (error) {
                 console.log(error);
+                window.alert(error.message)
+
               });
         
         
     }
 
+    if(redirect){
+        return (<Redirect to='/dash'/>)
+    }
 
 
 

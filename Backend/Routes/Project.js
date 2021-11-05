@@ -21,8 +21,6 @@ var sanitize = require('mongo-sanitize');
 router.use(express.json())
 
 
-
-// View Specific Project
 router.route('/:id').get(async(req,res) => {
   const info = sanitize(req.params)
 
