@@ -1,7 +1,8 @@
 .create-proj-form{
     position:absolute;
 
-  
+
+    top:5rem;
     left: 0;
     right: 0;
     bottom: 5rem;
@@ -12,9 +13,11 @@
   
     padding: 3rem;
     border-radius: 2px;
-    background-color: #f5fdff;
+    background-color: #ccd1ff73;
+    backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
     
 
 
@@ -25,17 +28,18 @@
     padding: 5px;
     color: #fff;
     font-weight: 700;
-    background-color: #0068ad;
+    background-color: #283be7;
 }
 
 .create-btn:hover{
-    background-color: #1881c7;
-    color: rgb(255, 255, 255);
+    background-color: #bdc4ff;
+    color: #283be7;
     
 }
 
 .create-proj-form>div>h1{
-    color:  rgb(0, 16, 26);
+    
+    color:  #000b69;
 }
 
 .create-proj-form>form{
@@ -49,7 +53,7 @@ form>input{
 }
 
 form>h3{
-    color: rgb(0, 16, 26) ;
+    color: #000b69 ;
 }
 input:focus{
     outline: none;

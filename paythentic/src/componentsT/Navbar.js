@@ -11,7 +11,7 @@ function Navbar() {
     return (
         <>
           <nav className='navbar'>
-            <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            <Link to='/dash' className='navbar-logo' onClick={closeMobileMenu}>
               <img src='./paythentic_logo_white-removebg-preview.png' alt=''/>
               Paythentic
             </Link>

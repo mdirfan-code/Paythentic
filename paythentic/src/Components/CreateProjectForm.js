@@ -11,11 +11,16 @@ export default function CreateProjectForm() {
             <div className='line-str'></div>
             <form method='GET'>
                 <h3>Project Name</h3>
-                <input type='text' placeholder='Enter Project Name'/>
+                <input type='text' placeholder='Enter Project Name' required/>
                 <h3>Client Username</h3>
-                <input type='text' placeholder="Client's @Username" />
+                <input type='text' placeholder="Client's @Username" required/>
                 <h3>Enter project description</h3>
-                <textarea placeholder='Project description goes here...' />
+                <textarea placeholder='Project description goes here...' required/>
+                <h3>Enter signing amount</h3>
+                <input type='number' placeholder='Enter project signing amount' required/>
+                <h3>Enter due date</h3>
+                <input type='date' required/>
+
                 <button className='create-btn'>Create</button>
             </form>
         </div>
