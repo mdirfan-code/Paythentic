@@ -32,8 +32,6 @@ const projectsSchema = new Schema(
         },
         dueDate:{
             type: Date,
-            
-        
         },
         projectFiles:[{
             type: Schema.Types.ObjectId,

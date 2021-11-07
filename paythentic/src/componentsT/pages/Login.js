@@ -60,6 +60,18 @@ const Login=({handleChange})=>{
                     console.log("passed access")
                     localStorage.setItem("refreshToken",response.data.refreshToken)
                     console.log("passed refresh")
+                    
+                    localStorage.setItem("username",response.data.username)
+                    console.log("passed username")
+                    localStorage.setItem("usertype",response.data.usertype)
+                    console.log("passed usertype")
+
+                    setInterval(()=>{
+                        axios.post("http://localhost:5000/auth/refreshToken",{
+                            refreshToken: localStorage
+                        })
+                    }, 1000*60*60)
+                    
                     setRedirect(true)
                     
                     

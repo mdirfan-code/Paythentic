@@ -36,7 +36,7 @@ function NavBar({userName}) {
             <div className="right-cor">
                 <span id='search-bar'>
                 <Icon path={mdiMagnify} title="User Profile" size={1}   color="rgb(6, 27, 41)" />
-                <input  type="text" placeholder="Search" on={() => setSearchListVisibility} />
+                <input  type="text" placeholder="Search" onChange={() => setSearchListVisibility} />
                 </span>
             <div className="profile-option" onClick={inClickHandler} >
                 <h2>@{userName}</h2>

@@ -17,9 +17,10 @@ export default function App(){
     return(
         <BrowserRouter>
         <Switch>
-            <Route path='/dash' exact component={ProjectList}/>
-            <Route path='/home' component={Home}/>
-            <Route path='/project' component={Dashboard}/>
+            <Route path='/'exact component={Home}/>
+            <Route path='/dash' component={ProjectList}/>
+            
+            <Route path='/project/:projId' component={Dashboard}/>
         </Switch>
         </BrowserRouter>
         

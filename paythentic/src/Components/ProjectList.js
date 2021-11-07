@@ -46,7 +46,7 @@ export default function ProjectList() {
             <div className="proj-list">
                 {
                   currentList.map(lstItm => (
-                      <Link to={`/mdirfan.code/dashboard/${lstItm.projNo}`} className='proj-link' key={lstItm.projId}>
+                      <Link to={`/project/${lstItm.projNo}`} className='proj-link' key={lstItm.projId}>
                           <div className='proj-slab' key={lstItm.projNo}>
                               <h5>PRJ#{lstItm.projId}</h5>
                                 <h2>{lstItm.projectName}</h2>
@@ -59,7 +59,7 @@ export default function ProjectList() {
             
             <button className="create-proj-btn" onClick={() => setVisibility(!isDialBoxVisible)}>+ Create Project</button>
         </div>
-        {isDialBoxVisible && <CreateProjectForm />}
+        {isDialBoxVisible && <CreateProjectForm/>}
         </>
     )
 }

@@ -129,6 +129,8 @@ router.route('/login').post( async (req,res) => {
                     success: 1,
                     accessToken: accessToken,
                     refreshToken: refreshToken,
+                    username:profile.username,
+                    usertype:profile.currentUserType,
                     message: 'You are successfully login',
                         
                     });
