@@ -68,7 +68,15 @@ const Login=({handleChange})=>{
 
                     setInterval(()=>{
                         axios.post("http://localhost:5000/auth/refreshToken",{
-                            refreshToken: localStorage
+                            refreshToken: localStorage.getItem('refreshToken')
+                        })
+                        .then((resp) => {
+                            localStorage.setItem("accessToken",resp.data.accessToken)
+                            console.log("refresh access")
+                            localStorage.setItem("refreshToken",resp.data.refreshToken)
+                        })
+                        .catch((err)=>{
+                            console.log(err)
                         })
                     }, 1000*60*60)
                     

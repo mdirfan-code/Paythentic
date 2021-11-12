@@ -21,13 +21,13 @@ router.use(express.json())
 
 const userTypes= {
     "Freelancer":"asFreelancer" ,
-    "Client":"asClient"}
+    "Employer":"asClient"}
 
 const changeType = (curtype)=>{
-    if(curtype==="Client"){
+    if(curtype==="Employer"){
         return "Freelancer"
     }
-    return "Client"
+    return "Employer"
 }
 
 // Active Project
@@ -243,7 +243,7 @@ router.route('/usertype').put( async (req,res) => {
         // console.log(profile.currentUserType)
         await User.updateOne({username:uname},{$set:{currentUserType:changeType(profile.currentUserType)}})
         .then((prof)=>{
-            // console.log(prof.currentUserType)
+            console.log(prof.currentUserType)
             res.status(200).json({
                 success: 1,
                 message:"user type changed successfully"

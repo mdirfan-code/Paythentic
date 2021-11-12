@@ -159,7 +159,7 @@ const Signup = () => {
                             onChange={handleInputChange}
                         >
                             <FormControlLabel 
-                                value="Client" 
+                                value="Employer" 
                                 control={<Radio />} 
                                 label="Employer" 
                             />

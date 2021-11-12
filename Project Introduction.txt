@@ -1,0 +1,24 @@
+Today we are living in a world where people of various industries doesn't hire employees for works like graphic designing, content writeing, software or application developement, so instead they hire freelancers for this sorts of work. Freelancers are people who pursues a profession without a long-term commitment to any one employer and work individually in a specific project assigned by client.
+
+Frauds happens with freelancers are:-
+	- After project dilevery somtimes clients pay less money than signing amount or no money at all.
+	- Holding advance payments from client and neglecting freelancers.
+Frauds happens with client are:-
+	- After payment freelancers delay project delevery.
+	- Freelancers neglects client after advance payment.
+
+Here PayThentic will help users to reduce risk of these frauds who gets encountered with frauds.  Users can create their profile on our platforms with certain credentials. Our platform will work as a mediator between them during whole process from connecting together to the completion of project.
+
+The process will be devided into 4 mojor stages for whole project:
+	1. Initial:
+		In this stage freelancer will wait for employer to pay 30% of signing amount in advance to our account that we will forward it to freelancer after completion of the process. As we recieve the payment we will let know the freelancer and process move ahead for furter stages.
+	2. Buidling:
+		After getting the notification that we have recieved advance payment. Freelancer will start working upon the project and this stage is called building stage.
+	3. Uploaded:
+		Once Project will have completed, freelancer will has to  submit or upload it at our platform. When the project will have been uploaded by freelancer, project will be at uploaded stage.
+	4. Review: 
+		As soon as we will got the project files we will notify it to the employer. And now he has to pay rest 70% of signing amount to us. After we will got the money, employer has permission to access these file and review it that, is it all expected or not? He will have 2 days to review project and notify us that everything is fine, so we can forward the money to freelancer. After two days if we will not get any insights from employer we will forward money to the freelancers.
+
+This all process will be happend automatically with security and payment process will be all legal there would be a no chance of fraud that could happen to our users form us.
+
+   

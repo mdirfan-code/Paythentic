@@ -37,7 +37,7 @@ const projectsSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref:'ProjectFile'
         }],
-        status:{
+        stage:{
             type: String,
             enum:['Initial','Building','Uploaded','Review'],
             default: 'Initial'

@@ -1,16 +1,68 @@
 import React,{useState, useEffect} from 'react';
 import './NavBar.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect } from 'react-router-dom';
 import Icon from '@mdi/react'
 import UpdateProfileForm from './UpdateProfileForm.js';
 import { mdiMagnify , mdiClose } from '@mdi/js';
+
+const axios = require('axios')
 
 
 function NavBar({userName}) {
     
     const [ isDialBoxVisible, setVisibility] = useState(false)
+    const [fetchedUsers,setFetchedUser] = useState([])
     const [isUpdateFormVisible,setUpdateFormVisibility] = useState(false)
     const [isSearchListVisible,setSearchListVisibility] = useState(false)
+    const [userType,setUserType] = useState(localStorage.getItem('usertype'))
+    const [redirect, setRedirect] = useState(false)
+
+    const userTypesOption ={
+        'Freelancer':'Employer',
+        'Employer':'Freelancer'
+    }
+
+    const changeUserTypeHandler = (uType) =>{
+
+        const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
+        axios.put('http://localhost:5000/dash/usertype',{},{
+            headers:{
+                'authorization': bearerToken
+            }
+        })
+        .then((resp)=>{
+            console.log(resp,'::',uType)
+            localStorage.setItem("usertype",uType)
+            setUserType(uType)
+            window.location.reload()
+            
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+
+    }
+
+    const fetchUnameWith = e =>{
+        if(e.target.value === ''){
+            setSearchListVisibility(false)
+            setFetchedUser([])
+            return
+        }
+        axios.get('http://localhost:5000/search',{
+            params:{q: e.target.value}
+        })
+        .then((resp) => {
+                console.log(resp.data.profiles);
+                setSearchListVisibility(true)
+                setFetchedUser(resp.data.profiles)
+            })
+        
+        .catch((err) => {
+            console.log(err)
+        })
+
+    }
 
     const inClickHandler = ()=> {
         setVisibility(true)
@@ -24,8 +76,28 @@ function NavBar({userName}) {
         window.removeEventListener('click',outClickHandler)
 
     }
+
+    const logOutHandle = () => {
+
+        axios.post("http://localhost:5000/auth/logout",{
+            refreshToken: localStorage.getItem('refreshToken')
+        })
+        .then((resp)=>{
+
+                console.log(resp)
+                setRedirect(true)
+
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+
+
+    }
         
-    
+    if(redirect){
+        return (<Redirect to='/'/>)
+    }
     
  
     const PROFILE_PIC ="https://source.unsplash.com/EQFtEzJGERg/1600x1600";
@@ -36,10 +108,14 @@ function NavBar({userName}) {
             <div className="right-cor">
                 <span id='search-bar'>
                 <Icon path={mdiMagnify} title="User Profile" size={1}   color="rgb(6, 27, 41)" />
-                <input  type="text" placeholder="Search" onChange={() => setSearchListVisibility} />
+                <input  type="text" placeholder="Search" onChange={(event) => fetchUnameWith(event)} />
                 </span>
+                { isSearchListVisible && <SearchList />}
+
+               
             <div className="profile-option" onClick={inClickHandler} >
-                <h2>@{userName}</h2>
+           
+                <h2>@{localStorage.getItem('username')?localStorage.getItem('username'):'username'}</h2>
                 <img className="profile-image" src={PROFILE_PIC} alt="Profile Pic"/>
                 </div>
                 {isDialBoxVisible && <Options />}
@@ -48,18 +124,31 @@ function NavBar({userName}) {
             
         </nav>
         { isUpdateFormVisible && <UpdateProfileForm userName={userName} isFreelancer={true} profilePicLink={PROFILE_PIC}/>}
+        {isUpdateFormVisible && <div className='OnBG' onClick={() => setUpdateFormVisibility(!isUpdateFormVisible)}></div>}
         </>
     )
 
     function Options() {
         return(
             <div className={`Options`} >
-                    <span className="cross-btn" onClick={() => setVisibility(false) }><Icon path={mdiClose} title="User Profile" size={1}   color="white" /></span>                
+                    <span className="cross-btn" onClick={() => setVisibility(false) }><Icon path={mdiClose} title="User Profile" size={1}   color="white" /></span>   
+                    <span className='change-user-type-btn' onClick={()=>{changeUserTypeHandler(userTypesOption[userType])}}>{userType==='Freelancer'?'Set as Employer':'Set as Freelancer'}</span>     
+                    <span className='connection-request-btn'>Connection Requests</span>        
                     <span className='update-profile-btn' onClick={() => setUpdateFormVisibility(!isUpdateFormVisible)}>Update Profile</span>
-                    <button>Log Out</button>
+                    <button onClick={logOutHandle}>Log Out</button>
             </div>
                  
         )
+    }
+
+    function SearchList(){
+
+
+        return(<div className='searchList'>
+                {
+                    fetchedUsers.length >0 ?fetchedUsers.map(user => <div className='uname-bar' key={user.username}>{user.username}</div>): <div className='uname-bar' key ='asdfsdf'>{"No User exist with this username" }</div>
+                }
+        </div>)
     }
 }
 

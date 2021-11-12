@@ -29,7 +29,7 @@ export default function ProjectList() {
        
 
 
-    },[projectType]);
+    },[projectType,localStorage.getItem('usertype')]);
 
    
 
@@ -46,8 +46,8 @@ export default function ProjectList() {
             <div className="proj-list">
                 {
                   currentList.map(lstItm => (
-                      <Link to={`/project/${lstItm.projNo}`} className='proj-link' key={lstItm.projId}>
-                          <div className='proj-slab' key={lstItm.projNo}>
+                      <Link to={`/project/${lstItm.projId}`} className='proj-link' key={lstItm.projId}>
+                          <div className='proj-slab' key={lstItm.projId}>
                               <h5>PRJ#{lstItm.projId}</h5>
                                 <h2>{lstItm.projectName}</h2>
                           </div>

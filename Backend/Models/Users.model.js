@@ -22,8 +22,8 @@ const userSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-            enum:['Client','Freelancer'],
-            default: 'Client'
+            enum:['Employer','Freelancer'],
+            default: 'Employer'
         },
         fullName:{
 

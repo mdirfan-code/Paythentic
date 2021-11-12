@@ -41,12 +41,14 @@ h1{
     z-index: 3;
     top: 4.3rem;
     display: flex;
-    background-color: rgb(6, 27, 41);
+    background-color: #000425da;
     padding-top:4.3rem;
-
+    justify-content: center;
+    align-content: center;
     padding: 0.5rem;
     row-gap: 1rem;
     right: 0;
+    backdrop-filter:blur(10px);
    
     flex-direction: column;
 }
@@ -63,7 +65,7 @@ border-radius:10px ;
 .Options>span:hover{
     background-color: rgba(255, 255, 255, 0.24);
 }
-.update-profile-btn{
+.update-profile-btn,.change-user-type-btn,.connection-request-btn{
    padding: 2px;
    border-radius:10px ;
 }
@@ -139,3 +141,19 @@ border-radius:10px ;
         display: none;
     }
 }
+
+.searchList{
+    position:fixed;
+    top:3rem;
+    display: flex;
+    z-index: 3;
+    background-color: aliceblue;
+    flex-direction: column;
+}
+.uname-bar{
+    color: black;
+}
+
+
+/* switch button  */
+
