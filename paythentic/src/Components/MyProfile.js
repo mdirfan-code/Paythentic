@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import NavBar from './NavBar'
 import './MyProfile.css'
 
@@ -7,6 +8,7 @@ const axios = require('axios')
 export default function LoginPanel() {
 
     const [expireances, setExpireances] = useState([])
+    const [redirect, setRedirect] = useState(false)
     const [skills, setSkills] = useState(['HTML','CSS','JavaScript','ReactJS','NodeJS','HTML','CSS','JavaScript'])
     const [info, setInfo] = useState({username:"@mdirfan-code",fullName:"Md. Irfan",currentUserType:"Freelancer",emailId:"mdirfan.code@gmail.com",contactNo:"90877234234",isVerified:true})
     
@@ -27,7 +29,9 @@ export default function LoginPanel() {
     },[])
 
 
-
+    if(redirect){
+        return (<Redirect to='/'/>)
+    }
     
     return (
         <>

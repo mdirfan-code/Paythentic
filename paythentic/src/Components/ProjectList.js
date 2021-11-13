@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import './ProjectList.css';
 import Navbar from './NavBar'
-import {Link, useLocation}from 'react-router-dom';
+import {Link, useLocation, Redirect}from 'react-router-dom';
 import CreateProjectForm from './CreateProjectForm.js';
 
 const axios = require('axios')
@@ -12,7 +12,7 @@ export default function ProjectList() {
 
     
     const [projectType,setProjectType] = useState('active')
-    
+    const [redirect, setRedirect] = useState(false)
     const [ isDialBoxVisible, setVisibility] = useState(false)
     const [currentList, setCurrentList] = useState([]);
 
@@ -26,12 +26,37 @@ export default function ProjectList() {
                 setCurrentList(response.data.projects)
                 console.log(response)
             })
+            .catch((err) =>{
+                if (err.message == 'jwt expired' ){
+                    axios.post("http://localhost:5000/auth/refreshToken",{
+                                refreshToken: localStorage.getItem('refreshToken')
+                            })
+                            .then((resp) => {
+                                localStorage.setItem("accessToken",resp.data.accessToken)
+                                console.log("refresh access")
+                                localStorage.setItem("refreshToken",resp.data.refreshToken)
+                            })
+                            .catch((err)=>{
+                                console.log(err)
+                                if (err.code == 401)
+                                {
+                                window.alert("You are not logined")
+                                setRedirect(true)
+                            }
+                            })
+                    
+                }
+                console.log(err)
+            })
        
 
 
     },[projectType,localStorage.getItem('usertype')]);
 
-   
+    if(redirect){
+        return (<Redirect to='/'/>)
+    }
+    
 
 
     

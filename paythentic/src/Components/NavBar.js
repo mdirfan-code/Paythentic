@@ -59,7 +59,28 @@ function NavBar({userName}) {
             })
         
         .catch((err) => {
+            if (err.code == 401 ){
+                axios.post("http://localhost:5000/auth/refreshToken",{
+                            refreshToken: localStorage.getItem('refreshToken')
+                        })
+                        .then((resp) => {
+                            localStorage.setItem("accessToken",resp.data.accessToken)
+                            console.log("refresh access")
+                            localStorage.setItem("refreshToken",resp.data.refreshToken)
+                        })
+                        .catch((err)=>{
+                            console.log(err)
+                            if (err.code == 401)
+                            {
+                            window.alert("You are not logined")
+                            setRedirect(true)
+                        }
+                        })
+                
+            }
+
             console.log(err)
+
         })
 
     }
