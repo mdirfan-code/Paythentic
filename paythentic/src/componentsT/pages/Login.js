@@ -1,4 +1,4 @@
-import '../../App.css';
+import '../../AppT.css';
 import React,{useState,useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
 import { Grid,Paper, Avatar, TextField, Button, Typography,Link} from '@material-ui/core'

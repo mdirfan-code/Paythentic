@@ -5,15 +5,15 @@ const useStyles = makeStyles((theme) =>({
     paperStyle :
     {
         padding :20,
-        width:340, 
+        width:'15rem', 
         margin:"0 auto",
-        height:540,
+        height:'fit-content',
         
     },
     paperStyleIndex :
     {
         
-        width:380, 
+        width:340, 
         margin:"0 auto",
         
     },
@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) =>({
         padding: "20px 5px",
         margin: "0 auto",
         backgroundColor:'#fff',
-        // height:"600px"
+        height:'fit-content',
+        
     }
     
 

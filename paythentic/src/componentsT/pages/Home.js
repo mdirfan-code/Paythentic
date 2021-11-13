@@ -1,18 +1,28 @@
 import React from 'react';
-import '../../App.css';
-import Navbart from '../Navbar'
+import '../../AppT.css';
 import LogInOutContainer from '../../container'; 
 import ContactUs from './ContactUs';
+import NavBart from '../../componentsT/Navbar'
+import SwipeableTextMobileStepper from '../control/stepper';
+import { StyledEngineProvider } from '@mui/material';
+
+
 
 export default function Home() {
-  return (<>
-      <Navbart />
-      <div className='bgimage'></div>
-     <div className='home'>
+  return (
+    <>
+    <NavBart/>
+    <div className='bgimage'></div>
+    <div className='home'>
       <div className='home-wrapper'>
         <div className='feature-description'>
           {/* <img  src='./paythentic_logo_black-removebg-preview.png' alt=''/> */}
-          <h1 className='tagline'>Ensure your freelance <br/>transaction</h1>
+       
+            <StyledEngineProvider injectFirst>
+              <SwipeableTextMobileStepper />
+            </StyledEngineProvider>
+        
+          {/* <h1 className='tagline'>Ensure your freelance <br/>transaction</h1> */}
         </div>
         <div className='login-form'>
           <LogInOutContainer/>
@@ -27,10 +37,9 @@ export default function Home() {
         </p>
       </div>
       <div className='MiddleElements'>
-      
-      <div id="test">
-        <ContactUs/>
-      </div>
+        <div id="test">
+          <ContactUs/>
+        </div>
       </div>
       <footer>
         <div>
@@ -41,7 +50,7 @@ export default function Home() {
           </ul>
         </div>
         <div> 
-          <p style={{"color":"black"}}>Copyright ©2021 All rights reserved</p>
+          <p>Copyright ©2021 All rights reserved</p>
         </div>
         <div>
           <a href="/terms-and-conditions" target="_blank" >Terms &amp; Conditions</a>|
@@ -50,7 +59,7 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  </>
-   
+    </>
+    
   );
 }

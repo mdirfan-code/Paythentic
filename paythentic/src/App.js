@@ -10,6 +10,8 @@ import Home from './componentsT/pages/Home';
 import MyProfile from './Components/MyProfile'
 import Dashboard from './Components/Dashboard';
 import ProjectList from './Components/ProjectList';
+import { customTheme } from './componentsT/pages/MaterialUIStyle';
+import { ThemeProvider } from '@material-ui/styles';
 
 export default function App(){
 
@@ -17,7 +19,9 @@ export default function App(){
     return(
         <BrowserRouter>
         <Switch>
+         <ThemeProvider theme={customTheme}>  
             <Route path='/'exact component={Home}/>
+        </ThemeProvider >
             <Route path='/dash' component={ProjectList}/>
             
             <Route path='/project/:projId' component={Dashboard}/>
