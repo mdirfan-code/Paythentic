@@ -5,7 +5,7 @@ import './MyProfile.css'
 
 const axios = require('axios')
 
-export default function LoginPanel() {
+export default function MyProfile() {
 
     const [expireances, setExpireances] = useState([
         {
@@ -29,17 +29,42 @@ export default function LoginPanel() {
     
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.get('http://localhost:5000/dash/MyProfile',{},{
+        axios.get('http://localhost:5000/dash/MyProfile',{
             headers:{
                 'authorization': bearerToken
             }
         })
         .then((resp)=>{
+
             console.log(resp)
-            
+            setInfo(resp.data.profile)
+            // setSkills(resp.data.profile.skills)
+            setSkills([])
+            setExpireances([])
         })
         .catch((err)=>{
-            console.log(err)
+            if (err.message == 'Request failed with status code 401' ){
+                axios.post("http://localhost:5000/auth/refreshToken",{
+                            refreshToken: localStorage.getItem('refreshToken')
+                        })
+                        .then((resp) => {
+                            localStorage.setItem("accessToken",resp.data.accessToken)
+                            console.log("refresh access")
+                            localStorage.setItem("refreshToken",resp.data.refreshToken)
+                            window.location.reload()
+                        })
+                        .catch((err)=>{
+                            console.log(err)
+                            if (err.message == 401)
+                            {
+                            window.alert("You are not logined")
+                            setRedirect(true)
+                        }
+                        })
+                
+            }
+
+            console.log(err.message)
         })
     },[])
 
@@ -71,29 +96,29 @@ export default function LoginPanel() {
                     <h3>Skills</h3>
                     <div className='my-skills-list'>
                         {
-                            skills.map(skill => (<h4 key={skills.indexOf(skill)} className='skill-brick'>{skill}</h4>))
+                            skills.length >0 ? skills.map(skill => (<h4 key={skills.indexOf(skill)} className='skill-brick'>{skill}</h4>)): <div className='unavailable-info-msg-box'>No skills added yet.</div>
                         }
                     </div>
 
                 </div>
                 <div className='my-expireance-section'>
-                        <h3>Expireance</h3>
+                        <h3>Experience</h3>
                         <div className='my-expireances-list'>
                             {
-                                expireances.map(expr => {
+                               expireances.length > 0 ? expireances.map(expr => {
                                     return(
-                                        <div className='expireance-slab'>
+                                        <div className='expireance-slab' key={expireances.indexOf(expr)}>
                                             <h4>{expr.designation}</h4>
                                             <h6>{expr.dateFrom} - {expr.dateTo}</h6>
                                             <h5>{expr.description}</h5>
                                         </div>
                                     )
-                                })
+                                }): <div className='unavailable-info-msg-box'>No experience added yet.</div>
                             }
                         </div>
                 </div>
                 <span className='my-profile-email-contact'><h3>Email :{'  '}</h3><h4>{info.emailId}</h4></span>
-                <span className ='my-profile-email-contact'><h3>Contact No. :{'  '}</h3> <h4>{info.contactNo}</h4></span>
+                <span className ='my-profile-email-contact'><h3>Contact No. :{'  '}</h3> <h4>{info.contactNo === undefined ?"Not added yet.":info.contactNo}</h4></span>
             </div>
 
 

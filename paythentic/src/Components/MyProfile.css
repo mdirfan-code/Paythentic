@@ -34,25 +34,29 @@
 }
 
 .wrapper-headers-my-info{
+    
     padding: 2rem;
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: space-between;
     align-items: baseline;
     align-self: flex-end;
     
 }
 
-.headers-my-info{
+.headers-my-infos{
     width: 10rem;
     display: flex;
-    gap: 2px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+ 
     flex-direction: column;
     line-height: 2px;
 }
 
-.headers-my-info>h1{
+.headers-my-infos>h1{
     color: black;
+    width: max-content;
     font-size: 2rem;
 }
 
@@ -143,4 +147,10 @@
 .expireance-slab > h6{
     padding: 0 1rem;
     margin: 0 1rem;
+}
+
+.unavailable-info-msg-box{
+    padding: 1rem;
+    background-color: rgba(35, 0, 73, 0.034);
+
 }

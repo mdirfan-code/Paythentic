@@ -15,6 +15,7 @@ router.route('/').get(async (req,res) => {
     await User.find({username:{"$regex":`.*${uname}.*`}},{"_id":0,username:true,})
     .then((profiles)=>{
         // console.log(profiles)
+
         res.status(200).json({
             success:1,
             profiles
@@ -33,8 +34,17 @@ router.route('/').get(async (req,res) => {
 // fecthing profile of particular 
 router.route('/:username').get(async (req,res) => {
     let uname = req.params.username
-    await User.findOne({username:uname},{"_id":0,username:true,"fullName":true,"currentUserType":true,"emailId":true,"skills":true,"experience":true,"profilePicUrl":true,'isVerified':true})
-    .then((profile)=>{  
+    console.log(uname)
+    await User.findOne({username:uname},{id:0,accountNo:0,password:0,ifscCode:0,historyProjects:0,activeProjects:0})
+    .then((profile)=>{ 
+        console.log(profile) 
+        if(profile == null){
+            res.status(200).json({
+                success:1,
+                message: "User does not",
+                profile
+            })
+        }
         res.status(200).json({
             success:1,
             message: "Found the User",
