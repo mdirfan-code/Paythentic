@@ -32,9 +32,3 @@ exports.uploadS3 = multer({
   }),
 });
 
-exports.isFileCame = (req,res) =>{
-    console.log(req.file)
-    if(req.file)
-    res.status(200).json({"files":req.file})
-    res.status(200).json({"message":"not getting any files"})
-} 

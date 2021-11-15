@@ -7,14 +7,29 @@ const axios = require('axios')
 
 export default function LoginPanel() {
 
-    const [expireances, setExpireances] = useState([])
+    const [expireances, setExpireances] = useState([
+        {
+            'designation':'00Project Manager at some xyz company',
+            'dateFrom':'2-12-15',
+            'dateTo':'09-04-19',
+            'description':'Project management is the process of leading the work of a team to achieve all project goals within the given constraints. This information is usually described in project documentation, created at the beginning of the development process. The primary constraints are scope, time, and budget. The secondary challenge is to optimize the allocation of necessary inputs and apply them to meet pre-defined objectives.'},
+        {
+            'designation':'44Project Manager at some xyz company',
+            'dateFrom':'2-12-15',
+            'dateTo':'09-04-19',
+            'description':'Project management is the process of leading the work of a team to achieve all project goals within the given constraints. This information is usually described in project documentation, created at the beginning of the development process. The primary constraints are scope, time, and budget. The secondary challenge is to optimize the allocation of necessary inputs and apply them to meet pre-defined objectives.'},
+        { 
+            'designation':'33Project Manager at some xyz company',
+            'dateFrom':'2-12-15',
+            'dateTo':'09-04-19',
+            'description':'Graphic design is the profession and academic discipline whose activity consists in projecting visual communications intended to transmit specific messages to social groups, with specific objectives. As opposed to art, whose aim is merely contemplation, design is based on the principle of "form follows a specific function".'}])
     const [redirect, setRedirect] = useState(false)
     const [skills, setSkills] = useState(['HTML','CSS','JavaScript','ReactJS','NodeJS','HTML','CSS','JavaScript'])
     const [info, setInfo] = useState({username:"@mdirfan-code",fullName:"Md. Irfan",currentUserType:"Freelancer",emailId:"mdirfan.code@gmail.com",contactNo:"90877234234",isVerified:true})
     
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.put('http://localhost:5000/dash/usertype',{},{
+        axios.get('http://localhost:5000/dash/MyProfile',{},{
             headers:{
                 'authorization': bearerToken
             }

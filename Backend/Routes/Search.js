@@ -33,7 +33,7 @@ router.route('/').get(async (req,res) => {
 // fecthing profile of particular 
 router.route('/:username').get(async (req,res) => {
     let uname = req.params.username
-    await User.findOne({username:uname,isVerified:true},{"_id":0,username:true,"fullName":true,"currentUserType":true,"emailId":true,"skills":true,"experience":true,"profilePicUrl":true})
+    await User.findOne({username:uname},{"_id":0,username:true,"fullName":true,"currentUserType":true,"emailId":true,"skills":true,"experience":true,"profilePicUrl":true,'isVerified':true})
     .then((profile)=>{  
         res.status(200).json({
             success:1,

@@ -38,7 +38,28 @@ function NavBar({userName}) {
             
         })
         .catch((err)=>{
-            console.log(err)
+            if (err.message == 'Request failed with status code 401' ){
+                axios.post("http://localhost:5000/auth/refreshToken",{
+                            refreshToken: localStorage.getItem('refreshToken')
+                        })
+                        .then((resp) => {
+                            localStorage.setItem("accessToken",resp.data.accessToken)
+                            console.log("refresh access")
+                            localStorage.setItem("refreshToken",resp.data.refreshToken)
+                            window.location.reload()
+                        })
+                        .catch((err)=>{
+                            console.log(err)
+                            if (err.message == 401)
+                            {
+                            window.alert("You are not logined")
+                            setRedirect(true)
+                        }
+                        })
+                
+            }
+
+            console.log(err.message)
         })
 
     }
@@ -59,7 +80,7 @@ function NavBar({userName}) {
             })
         
         .catch((err) => {
-            if (err.code == 401 ){
+            if (err.message == 'Request failed with status code 401' ){
                 axios.post("http://localhost:5000/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
@@ -67,10 +88,11 @@ function NavBar({userName}) {
                             localStorage.setItem("accessToken",resp.data.accessToken)
                             console.log("refresh access")
                             localStorage.setItem("refreshToken",resp.data.refreshToken)
+                            window.location.reload()
                         })
                         .catch((err)=>{
                             console.log(err)
-                            if (err.code == 401)
+                            if (err.message == 401)
                             {
                             window.alert("You are not logined")
                             setRedirect(true)
@@ -79,7 +101,7 @@ function NavBar({userName}) {
                 
             }
 
-            console.log(err)
+            console.log(err.message)
 
         })
 
@@ -125,13 +147,14 @@ function NavBar({userName}) {
    
     return (<>
         <nav className="NavBar">
-            <Link to='/' id="paythentic-logo"><h1>PayThentic</h1></Link>
+            <Link to='/dash' id="paythentic-logo"><h1>PayThentic</h1></Link>
             <div className="right-cor">
                 <span id='search-bar'>
                 <Icon path={mdiMagnify} title="User Profile" size={1}   color="rgb(6, 27, 41)" />
-                <input  type="text" placeholder="Search" onChange={(event) => fetchUnameWith(event)} />
+                <input  type="text" placeholder="Search" onChange={(event) => fetchUnameWith(event)} on />
                 </span>
                 { isSearchListVisible && <SearchList />}
+                
 
                
             <div className="profile-option" onClick={inClickHandler} >
@@ -146,6 +169,8 @@ function NavBar({userName}) {
         </nav>
         { isUpdateFormVisible && <UpdateProfileForm userName={userName} isFreelancer={true} profilePicLink={PROFILE_PIC}/>}
         {isUpdateFormVisible && <div className='OnBG' onClick={() => setUpdateFormVisibility(!isUpdateFormVisible)}></div>}
+        {isSearchListVisible && <div className='OnBG' onClick={() => setSearchListVisibility(!isSearchListVisible)}></div>}
+       
         </>
     )
 
@@ -154,6 +179,7 @@ function NavBar({userName}) {
             <div className={`Options`} >
                     <span className="cross-btn" onClick={() => setVisibility(false) }><Icon path={mdiClose} title="User Profile" size={1}   color="white" /></span>   
                     <span className='change-user-type-btn' onClick={()=>{changeUserTypeHandler(userTypesOption[userType])}}>{userType==='Freelancer'?'Set as Employer':'Set as Freelancer'}</span>     
+                    <Link to='/MyProfile' style={{textDecoration: 'none'}}><span className='your-profile-btn'>Your Profile</span></Link>
                     <span className='connection-request-btn'>Connection Requests</span>        
                     <span className='update-profile-btn' onClick={() => setUpdateFormVisibility(!isUpdateFormVisible)}>Update Profile</span>
                     <button onClick={logOutHandle}>Log Out</button>

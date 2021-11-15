@@ -27,7 +27,7 @@ export default function UpdateProfileForm({isFreelancer,userName,profilePicLink,
         <div className='update-profile-form'>
             <h1>Your Profile</h1>
             <div className='upper-side'>
-                <div className='profile-pic-picker'><img className='profile-image-edit' src={profilePicLink} /><div className='update-photo-btn' >Update Photo</div></div>
+                <div className='profile-pic-picker'><img className='profile-image-edit' src={profilePicLink} /><input type='file' className='update-photo-btn' /></div>
                 <div className='user-immutable-details'><span className='save-btn-wrap'><button>Save</button></span><h2>{`@${userName}`}</h2><h3>{isFreelancer?'Freelancer':'Client'}</h3></div>
             </div>
             <div className='line-str'></div>

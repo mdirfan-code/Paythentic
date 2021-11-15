@@ -35,11 +35,11 @@ export default function Dashboard() {
 
 
             setProjectDetails(resp.data.project)
-            console.log(projectDetails.stage)
+            console.log(projectDetails)
 
         })
         .catch((err)=>{
-            if (err.code == 401 ){
+            if (err.message == 'Request failed with status code 401' ){
                 axios.post("http://localhost:5000/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
@@ -47,10 +47,11 @@ export default function Dashboard() {
                             localStorage.setItem("accessToken",resp.data.accessToken)
                             console.log("refresh access")
                             localStorage.setItem("refreshToken",resp.data.refreshToken)
+                            window.location.reload()
                         })
                         .catch((err)=>{
                             console.log(err)
-                            if (err.code == 401)
+                            if (err.message == 401)
                             {
                             window.alert("You are not logined")
                             setRedirect(true)
@@ -59,7 +60,7 @@ export default function Dashboard() {
                 
             }
 
-            console.log(err)
+            console.log(err.message)
             
         })
     },[])
@@ -75,16 +76,15 @@ export default function Dashboard() {
         <>
         <NavBar />
          <div className="bg-DshBrd">
-            <div className="wrap-proj-chat">
+    
                 <div className="proj-desc"><div className="proj-info">
                 <h3>PRJ#{}</h3>
-                {/* <h1>{PROJ_NAME}</h1>
-                <h6>{PROJ_DESC}</h6> */}
+                <h1>{projectDetails.projectName}</h1>
+                <h6>{projectDetails.projectDscrp}</h6>
                 </div>
                 <StatusCard isFreelancer={isFreelancer} stage={projectDetails.stage}/>
                 </div>
-                {/* <Messaging /> */}
-            </div>
+              
         </div></>
        
     )

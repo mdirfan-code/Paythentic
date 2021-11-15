@@ -128,3 +128,19 @@
     }
    
 }
+.expireance-slab{
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgba(35, 0, 73, 0.137);
+}
+.expireance-slab > h4, 
+.expireance-slab > h5 {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgba(35, 0, 73, 0.034);
+}
+
+.expireance-slab > h6{
+    padding: 0 1rem;
+    margin: 0 1rem;
+}

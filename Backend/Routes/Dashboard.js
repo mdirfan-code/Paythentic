@@ -161,7 +161,7 @@ router.route('/createProject').post(async (req,res) => {
 })
 
 // view Your Profile
-router.route('/YourProfile').get( async (req,res) => {
+router.route('/MyProfile').get( async (req,res) => {
     const uname = req.payload.aud[1]
 
     await User.findOne({username:uname},{accountNo:0,password:0,ifscCode:0,historyProjects:0,activeProjects:0})
