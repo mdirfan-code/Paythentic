@@ -1,0 +1,12 @@
+Project Objective
+To reduce frauds during freelancing, we are come up with the idea that there will be a online platform PayThentic which will act as a wise mediator between users. The whole process will be divided into four stages that are Initial, Building, Uploded, and Review.
+	
+Functionality
+
+* It will let you find users with appropriate username.
+* It will provide authentication and authorization of user.
+* There will be a feature to upload and download project files.
+* User can view his or others profile and can update his profile info.
+
+
+ 

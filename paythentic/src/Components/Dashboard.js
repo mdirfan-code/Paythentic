@@ -7,16 +7,16 @@ import NavBar from './NavBar';
 
 const axios = require('axios')
 export default function Dashboard() {
-
+    const {paramProjId} = useParams();
     const [projectDetails,setProjectDetails] = useState({})
     const [redirect, setRedirect] = useState(false)
     const [isFreelancer,setUserType] = useState()
-    const param = useParams();
-    console.log(param);
+   
+    console.log(paramProjId);
 
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.get(`http://localhost:5000/project/${param.projId}`,{
+        axios.get(`http://localhost:5000/project/${paramProjId}`,{
             headers:{
                 'authorization': bearerToken
             }
