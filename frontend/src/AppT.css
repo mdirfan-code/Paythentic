@@ -1,0 +1,157 @@
+* {
+  /* box-sizing: border-box;
+  margin: 0;
+  padding: 0; */
+  font-family: "PT Sans", sans-serif;
+}
+
+
+
+/* .home,
+.contact-us,
+.login {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+.home {
+  background-image: url('https://source.unsplash.com/dYXZusHbohI');
+  /* transform: rotate(90deg); */
+  /* background-color: #09151b; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 3.4rem;
+  color: black;
+  /* font-size: 100px; */
+}
+
+.home-wrapper{
+  /* height: 100vh; */
+  /* width: 100%; */
+ 
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem;
+  /* margin-right: 2rem; */
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  top: 4rem;
+  
+}
+.feature-description{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  /* width: 50%;
+  height: 60%; */
+}
+
+
+.MiddleElements{
+  margin:0 20px;
+} 
+
+.login-form{
+  display: flex;
+  justify-content: baseline;
+  align-items: baseline;
+  margin: 2rem;
+}
+
+
+
+.contact-us {
+  padding-top: 100px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  
+}
+
+.login {
+  
+  /* background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
+  color: #fff;
+  /* font-size: 100px; */
+}
+
+
+
+* ::-webkit-scrollbar {
+  display: none;
+}
+
+.about-us{
+  color: white;
+  /* background-color: #fafafa; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  position: relative;
+  top: 90px;
+  padding: 0px 15px;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+footer{
+  color: rgba(75, 75, 75, 0.822);
+  background-color: whitesmoke;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 40px;
+}
+
+footer div:first-child{
+  margin-bottom: 40px;
+}
+footer div:nth-child(2){
+  margin-bottom: 30px;
+}
+footer div:last-child{
+  margin-bottom: 30px;
+}
+footer div a{
+  text-decoration: none;
+  color: rgba(75, 75, 75, 0.822);
+  margin:0 10px 0 10px;
+}
+footer div a:hover{
+  border-bottom: 2px solid #21302f ;
+}
+
+footer .social-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+footer .social-icons li a{
+  padding: 8px 10px;
+  color: #21302f;
+}
+footer .social-icons li a:hover{
+  background-color:  #21302f;
+  color: #fff;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 960px) {
+  .home-wrapper{
+    justify-content: center;
+    /* margin-right: 2px; */
+  }
+  
+}

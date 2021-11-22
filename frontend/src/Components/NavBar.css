@@ -1,0 +1,173 @@
+.NavBar{
+    position:fixed;
+    right:0;
+    left:0;
+    top:0;
+  
+    padding: 0.1em 0.8em;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background:rgba(0, 11, 19, 0.534);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+h1{
+    color: white;
+    font-size: 1.5rem;
+}
+.profile-option>h2{
+    font-size: 0.8rem;
+    color: white;
+}
+
+
+#paythentic-logo{
+    display:flex;
+    
+        text-decoration: none;
+    
+
+}
+
+#logo{
+    width:30px;
+    
+}
+
+.Options{
+    position: fixed;
+    z-index: 3;
+    top: 4.3rem;
+    display: flex;
+    background-color: #000425da;
+    padding-top:4.3rem;
+    justify-content: center;
+    align-content: center;
+    padding: 0.5rem;
+    row-gap: 1rem;
+    right: 0;
+    backdrop-filter:blur(10px);
+   
+    flex-direction: column;
+}
+ul{
+    list-style-type: none;
+}
+
+.cross-btn{
+display: flex;
+justify-content: center;
+border-radius:10px ;
+
+}
+.Options>span:hover,.your-profile-btn:hover{
+    background-color: rgba(255, 255, 255, 0.24);
+}
+.update-profile-btn,.change-user-type-btn,.connection-request-btn,.your-profile-btn{
+    text-emphasis: none;
+    color:#fff;
+
+   padding: 2px;
+   border-radius:10px ;
+}
+
+
+.right-cor{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1.8rem;
+}
+
+#search-bar{
+    display: inline-flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: rgb(131, 205, 255);
+    padding-left: 0.5rem !important;
+    padding: 0.3rem 2rem;
+    border-radius: 30px;
+    
+}
+
+#search-bar>input::placeholder {
+    color: rgb(6, 27, 41);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 1; /* Firefox */
+  }
+  
+  #search-bar>input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:rgb(6, 27, 41);
+   font-size: 0.9rem;
+   font-weight: 600;
+  }
+  
+  #search-bar>input::-ms-input-placeholder { /* Microsoft Edge */
+   color: rgb(6, 27, 41);
+   font-size: 0.9rem;
+   font-weight: 600;
+  }
+
+#search-bar>input{
+ 
+    background-color: rgba(131, 205, 255, 0.767);
+    padding: 0.3rem;
+    border: none;
+}
+#search-bar>input:focus{
+   outline: none;
+}
+
+.profile-option{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.8rem;
+
+}
+
+.profile-image{
+    width: 2.0rem;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+}
+@media only screen and (max-width: 580px) {
+
+    .profile-option>h2{
+        display: none;
+    }
+
+    #search-bar>input{
+        display: none;
+    }
+}
+
+.searchList{
+    position:fixed;
+    top:3.7rem;
+    display: flex;
+    
+    width: 13rem;
+    padding: 1rem;
+    border-radius: 5px;
+
+    background-color: rgba(131, 205, 255, 0.767);;
+    flex-direction: column;
+}
+.uname-bar{
+    color: black;
+    padding: 2px;
+}
+
+.uname-bar:hover{
+    color: white;
+    background-color: rgb(6, 27, 41);
+}
+
+
+/* switch button  */
+

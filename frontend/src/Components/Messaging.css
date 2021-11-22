@@ -1,0 +1,39 @@
+.message-box-btn{
+    position: fixed;
+    background-color: rgba(6, 27, 41, 0.726);
+    padding: 0.5rem;
+    bottom: 1rem;
+    right: 1rem;
+    color: rgb(221, 255, 252);
+}
+.message-box-btn:hover{
+    background-color: rgb(221, 255, 252);
+    font-weight: bold;
+    color: rgba(6, 27, 41, 0.726);
+}
+.message-out-line{
+    position: fixed;
+    padding: 0.8rem;
+    bottom: 3.5rem;
+    border-radius: 5px;
+    right: 1.0rem;
+    background-color:rgba(221, 255, 252, 0.945);
+    
+    width: 350px;
+    height: 400px;
+    
+}
+
+#msg-box-title{
+    color: rgba(6, 27, 41, 0.726);
+}
+
+.Off-msg-box{
+    display: none;
+}
+@media only screen and (max-width: 580px) {
+    .message-out-line{
+        
+        width: 100%;
+    }
+}
