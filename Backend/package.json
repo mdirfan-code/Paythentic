@@ -7,8 +7,8 @@
     "dev":"nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../frontend && npm run build --prod && cp -r build ../Backend && cd ../Backend",
-    "deploy": "cd .. && git subtree push --prefix Backend heroku main",
-    "deploy:full": "npm run build:ui && git checkout heroku-deploy && git add . && git commit -m uibuild && npm run deploy",
+    "deploy": "git subtree push --prefix Backend heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "author": "",
