@@ -21,6 +21,7 @@ const port = process.env.PORT || 5000;
 
 app.use(mongoSanitize());
 app.use(cors());
+app.use(express.static("build"));
 app.use(express.json());
 app.use(express.urlencoded({ limit: "50mb", parameterLimit: 500000000 }));
 
