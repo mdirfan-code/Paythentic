@@ -12,7 +12,14 @@ export default function ProjectList() {
 
     
     const [projectType,setProjectType] = useState('active')
-    const [redirect, setRedirect] = useState(false)
+    const [Redirect, setRedirect
+    
+    
+    
+    
+    
+    
+    ] = useState(false)
     const [ isDialBoxVisible, setVisibility] = useState(false)
     const [currentList, setCurrentList] = useState([]);
 
@@ -56,7 +63,7 @@ export default function ProjectList() {
 
     },[projectType,localStorage.getItem('usertype')]);
 
-    if(redirect){
+    if(Redirect){
         return (<Redirect to='/'/>)
     }
     

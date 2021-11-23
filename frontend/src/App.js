@@ -20,20 +20,23 @@ export default function App(){
 
 
     return(
+        
         <BrowserRouter>
         <Switch>
-         <ThemeProvider theme={customTheme}>  
+        
             <Route path='/'exact component={Home}/>
-       
+            
             <Route path='/dash' component={ProjectList}/>
             <Route path='/MyProfile' component={MyProfile}/>
             
             <Route path='/project/:paramProjId' component={Dashboard}/>
             <Route path='/search/:Username' component={GeneralProject}/>
            
-            </ThemeProvider >
+            
         </Switch>
+
         </BrowserRouter>
+        
         
     )
 

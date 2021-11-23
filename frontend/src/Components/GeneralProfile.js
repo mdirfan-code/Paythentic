@@ -24,7 +24,7 @@ export default function GeneralProfile() {
             'dateFrom':'2-12-15',
             'dateTo':'09-04-19',
             'description':'Graphic design is the profession and academic discipline whose activity consists in projecting visual communications intended to transmit specific messages to social groups, with specific objectives. As opposed to art, whose aim is merely contemplation, design is based on the principle of "form follows a specific function".'}])
-    const [redirect, setRedirect] = useState(false)
+    const [Redirect, setRedirect] = useState(false)
     const [skills, setSkills] = useState(['HTML','CSS','JavaScript','ReactJS','NodeJS','HTML','CSS','JavaScript'])
     const [info, setInfo] = useState({username:"@mdirfan-code",fullName:"Md. Irfan",currentUserType:"Freelancer",emailId:"mdirfan.code@gmail.com",contactNo:"90877234234",isVerified:true})
     
@@ -65,7 +65,7 @@ export default function GeneralProfile() {
     },[])
 
 
-    if(redirect){
+    if(Redirect){
         return (<Redirect to='/'/>)
     }
     

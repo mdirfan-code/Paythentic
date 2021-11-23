@@ -15,7 +15,7 @@ function NavBar({userName}) {
     const [isUpdateFormVisible,setUpdateFormVisibility] = useState(false)
     const [isSearchListVisible,setSearchListVisibility] = useState(false)
     const [userType,setUserType] = useState(localStorage.getItem('usertype'))
-    const [redirect, setRedirect] = useState(false)
+    const [Redirect, setRedirect] = useState(false)
 
     const userTypesOption ={
         'Freelancer':'Employer',
@@ -138,7 +138,7 @@ function NavBar({userName}) {
 
     }
         
-    if(redirect){
+    if(Redirect){
         return (<Redirect to='/'/>)
     }
     

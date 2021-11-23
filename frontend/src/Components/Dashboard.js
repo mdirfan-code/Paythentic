@@ -9,7 +9,7 @@ const axios = require('axios')
 export default function Dashboard() {
     const {paramProjId} = useParams();
     const [projectDetails,setProjectDetails] = useState({})
-    const [redirect, setRedirect] = useState(false)
+    const [Redirect, setRedirect] = useState(false)
     const [isFreelancer,setUserType] = useState()
    
     console.log(paramProjId);
@@ -66,7 +66,7 @@ export default function Dashboard() {
         })
     },[])
     
-    if(redirect){
+    if(Redirect){
         return (<Redirect to='/'/>);
     }
     

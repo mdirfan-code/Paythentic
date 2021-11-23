@@ -21,12 +21,12 @@ const Login=({handleChange})=>{
     }
 
     const [values,setValues] = useState(initialFValues);
-    const [redirect, setRedirect] = useState(false)
+    const [doRedirect, setRedirect] = useState(false)
 
     useEffect(()=>{
         return
        
-    },[redirect])
+    },[doRedirect])
 
     const handleInputChange = e =>{
         const {name,value} = e.target
@@ -80,9 +80,7 @@ const Login=({handleChange})=>{
                         })
                     }, 1000*60*60)
                     
-                    setRedirect(true)
-                    
-                    
+                    setRedirect(true);
                 }
                   else{
                     window.alert(response.data.message)
@@ -99,7 +97,7 @@ const Login=({handleChange})=>{
         
     }
 
-    if(redirect){
+    if(doRedirect){
         return (<Redirect to='/dash'/>)
     }
 
