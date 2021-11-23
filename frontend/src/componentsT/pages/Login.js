@@ -45,7 +45,7 @@ const Login=({handleChange})=>{
 
         console.log("Sending request...........")
    
-            axios.post(`/auth/login`, {
+            axios.post(`http://localhost:5000/auth/login`, {
                 
                 username: makeUsername(values.emailId),
                 password: values.password
@@ -67,7 +67,7 @@ const Login=({handleChange})=>{
                     console.log("passed usertype")
 
                     setInterval(()=>{
-                        axios.post(`/auth/refreshToken`,{
+                        axios.post(`http://localhost:5000/auth/refreshToken`,{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
