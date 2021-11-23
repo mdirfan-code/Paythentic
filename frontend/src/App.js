@@ -28,7 +28,7 @@ export default function App(){
             <Route path='/dash' component={ProjectList}/>
             <Route path='/MyProfile' component={MyProfile}/>
             
-            <Route path='/project/:projId' component={Dashboard}/>
+            <Route path='/project/:paramProjId' component={Dashboard}/>
             <Route path='/search/:Username' component={GeneralProject}/>
            
             </ThemeProvider >

@@ -16,6 +16,7 @@ export default function Dashboard() {
 
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
+        
         axios.get(`http://localhost:5000/project/${paramProjId}`,{
             headers:{
                 'authorization': bearerToken

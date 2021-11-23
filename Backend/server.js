@@ -16,7 +16,7 @@ const {
 } = require('./Helpers/JWT_methods.help')
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 
 app.use(mongoSanitize());
