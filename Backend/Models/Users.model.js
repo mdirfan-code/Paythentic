@@ -82,7 +82,8 @@ const userSchema = new Schema(
             type:String
         },
         profilePicUrl:{
-            type:String
+            type:String,
+            default:"https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"
         },
         historyProjects:{asClient:[{
             type: Schema.Types.ObjectId, ref: 'Project'

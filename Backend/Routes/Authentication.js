@@ -14,10 +14,21 @@ const {
 const User = require('../Models/Users.model') 
 const Token = require('../Models/Token.model')
 
+const checkUnderscore = () => {
+
+}
+
 router.route('/signup').post( async (req,res) => {
     console.log( {
         ...req.body
     })
+    // if("_" in req.body.password){
+    //     res.status(200).json({
+    //         success:0,
+    //         message:"password doesn't contain underscore"
+    //     })
+    // }
+   
     let newUser = new User(
         {
             ...req.body

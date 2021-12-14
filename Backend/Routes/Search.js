@@ -12,7 +12,7 @@ require('dotenv').config();
 router.route('/').get(async (req,res) => {
     let uname = req.query.q
     // console.log(uname)
-    await User.find({username:{"$regex":`.*${uname}.*`}},{"_id":0,username:true,})
+    await User.find({username:{"$regex":`.*${uname}.*`}},{"_id":0,username:true,}).limit(5)
     .then((profiles)=>{
         // console.log(profiles)
 

@@ -24,8 +24,10 @@ router.use(express.json())
 router.route('/:id').get(async(req,res) => {
   const info = sanitize(req.params)
 
+    console.log("info display", info)
 
-    await Project.findOne({id:info.id},{_id:0,projectFiles:0})
+
+    await Project.findOne({_id:info.id},{_id:0,projectFiles:0})
     .then( (proj) => {
       console.log(proj)
       res.status(200).json(
