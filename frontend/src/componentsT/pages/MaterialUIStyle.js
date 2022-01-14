@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) =>({
     paperStyle :
     {
         padding :20,
-        width:'15rem', 
+        width:300, 
         margin:"0 auto",
         height:'fit-content',
         

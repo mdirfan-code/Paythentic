@@ -2,7 +2,6 @@
 import React,{useEffect} from 'react';
 import Navbart from './componentsT/Navbar';
 import './AppT.css';
-import './AppTr.css';
 import Home from './componentsT/pages/Home';
 // import AppI from "./AppI";
 //  import AppT from "./AppT";
@@ -23,15 +22,17 @@ export default function App(){
         
         <BrowserRouter>
         <Switch>
-        
-            <Route path='/'exact component={Home}/>
-            
-            <Route path='/dash' component={ProjectList}/>
-            <Route path='/MyProfile' component={MyProfile}/>
-            
-            <Route path='/project/:paramProjId' component={Dashboard}/>
-            <Route path='/search/:Username' component={GeneralProject}/>
+            <ThemeProvider theme={customTheme}> 
+                <Route path='/'exact component={Home}/>
+
+                
+                <Route path='/dash' component={ProjectList}/>
+                <Route path='/MyProfile' component={MyProfile}/>
+                
+                <Route path='/project/:paramProjId' component={Dashboard}/>
+                <Route path='/search/:Username' component={GeneralProject}/>
            
+            </ThemeProvider>
             
         </Switch>
 

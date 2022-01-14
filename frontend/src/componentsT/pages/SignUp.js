@@ -97,7 +97,7 @@ const Signup = () => {
     const handleSubmit = e =>{
         e.preventDefault()
         if(validate()){
-            axios.post('http://localhost:5000/auth/signup', {
+            axios.post('/auth/signup', {
                 username: makeUsername(values.email),
                 fullName: values.fullName,
                 emailId: values.email,

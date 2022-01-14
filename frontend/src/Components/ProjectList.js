@@ -12,14 +12,7 @@ export default function ProjectList() {
 
     
     const [projectType,setProjectType] = useState('active')
-    const [Redirect, setRedirect
-    
-    
-    
-    
-    
-    
-    ] = useState(false)
+    const [Redirect, setRedirect ] = useState(false)
     const [ isDialBoxVisible, setVisibility] = useState(false)
     const [currentList, setCurrentList] = useState([]);
 
@@ -29,7 +22,7 @@ export default function ProjectList() {
 
             console.log(window.location.hostname)
             const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-            axios.get(`http://localhost:5000/dash${projectType=='active'?"":"/history"}`,{headers:{
+            axios.get(`/dash${projectType=='active'?"":"/history"}`,{headers:{
                 'authorization': bearerToken
             }})
             .then((response)=>{
@@ -38,7 +31,7 @@ export default function ProjectList() {
             })
             .catch((err) =>{
                 if (err.message == 'jwt expired' ){
-                    axios.post(`http://localhost:5000/auth/refreshToken`,{
+                    axios.post(`/auth/refreshToken`,{
                                 refreshToken: localStorage.getItem('refreshToken')
                             })
                             .then((resp) => {
@@ -86,7 +79,6 @@ export default function ProjectList() {
                               <h5>PRJ#{lstItm.projId}</h5>
                                 <h2>{lstItm.projectName}</h2>
                           </div>
-                          
                       </Link>
                   ))
                 }
@@ -94,7 +86,7 @@ export default function ProjectList() {
             
             <button className="create-proj-btn" onClick={() => setVisibility(!isDialBoxVisible)}>+ Create Project</button>
         </div>
-        {isDialBoxVisible && <CreateProjectForm/>}
+        {isDialBoxVisible && <CreateProjectForm setVisibilityCF={(v)=>{setVisibility(v)}}/>}
         </>
     )
 }

@@ -15,7 +15,7 @@ function NavBar({userName}) {
     const [isUpdateFormVisible,setUpdateFormVisibility] = useState(false)
     const [isSearchListVisible,setSearchListVisibility] = useState(false)
     const [userType,setUserType] = useState(localStorage.getItem('usertype'))
-    const [Redirect, setRedirect] = useState(false)
+    const [doRedirect, setRedirect] = useState(false)
 
     const userTypesOption ={
         'Freelancer':'Employer',
@@ -25,7 +25,7 @@ function NavBar({userName}) {
     const changeUserTypeHandler = (uType) =>{
 
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.put('http://localhost:5000/dash/usertype',{},{
+        axios.put('/dash/usertype',{},{
             headers:{
                 'authorization': bearerToken
             }
@@ -39,7 +39,7 @@ function NavBar({userName}) {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("http://localhost:5000/auth/refreshToken",{
+                axios.post("/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -70,7 +70,7 @@ function NavBar({userName}) {
             setFetchedUser([])
             return
         }
-        axios.get('http://localhost:5000/search',{
+        axios.get('/search',{
             params:{q: e.target.value}
         })
         .then((resp) => {
@@ -81,7 +81,7 @@ function NavBar({userName}) {
         
         .catch((err) => {
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("http://localhost:5000/auth/refreshToken",{
+                axios.post("/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -122,7 +122,7 @@ function NavBar({userName}) {
 
     const logOutHandle = () => {
 
-        axios.post("http://localhost:5000/auth/logout",{
+        axios.post("/auth/logout",{
             refreshToken: localStorage.getItem('refreshToken')
         })
         .then((resp)=>{
@@ -138,12 +138,12 @@ function NavBar({userName}) {
 
     }
         
-    if(Redirect){
+    if(doRedirect){
         return (<Redirect to='/'/>)
     }
     
  
-    const PROFILE_PIC ="https://source.unsplash.com/EQFtEzJGERg/1600x1600";
+    const PROFILE_PIC ="https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png";
    
     return (<>
         <nav className="NavBar">
@@ -190,10 +190,15 @@ function NavBar({userName}) {
 
     function SearchList(){
 
+        const clickHandlerUname = async (uname) => {
+            window.location.assign(`/search/${uname}`)
+            
+        }
+
 
         return(<div className='searchList'>
                 {
-                    fetchedUsers.length >0 ?fetchedUsers.map(user => <div className='uname-bar' key={user.username}>{user.username}</div>): <div className='uname-bar' key ='asdfsdf'>{"No User exist with this username" }</div>
+                    fetchedUsers.length >0 ?fetchedUsers.map(user =><Link to={`/search/${user.username}`} ><div className='uname-bar' key={user.username} onClickCapture={()=>clickHandlerUname(user.username)}>{user.username}</div></Link> ): <div className='uname-bar' key ='asdfsdf'>{"No User exist with this username" }</div>
                 }
         </div>)
     }

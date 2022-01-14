@@ -31,9 +31,32 @@ export default function Home() {
       <div className='about-us'>
         <h2>About Us</h2> 
         <p>
-          This is a free online calculator which counts the number of characters or letters in a text, useful for your tweets on Twitter, as well as a multitude of other applications.
+        Today we are living in a world where people of various industries don't hire employees for works 
+like graphic designing, content writing, software, or application development, so instead, they hire 
+freelancers for this sort of work. Freelancers are people who pursue a profession without a longterm commitment to any one employer and work individually on a specific project assigned by the 
+client.
+<br/>
+<br/>
+Frauds that happens with freelancers are:-
+<br/>
+- After project delivery sometimes clients pay less money than the signing amount or no money at 
+all.
+<br/>
+- Holding advance payments from a client and neglecting freelancers.
+<br/>
+<br/>
+Frauds that happens with the client are:-
+<br/>
+- After payment freelancers delay project delivery.
+<br/>
+- Freelancers neglects client after advance payment.
+<br/>
+<br/>
+Here PayThentic will help users to reduce the risk of these frauds who get encountered frauds. 
+Users can create their profiles on our platforms with certain credentials. Our platform will work as 
+a mediator between them during the whole process from connecting to the completion of the 
+project.
 
-          Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters. What you say may not be as important as how you say it. And how many characters you use.
         </p>
       </div>
       <div className='MiddleElements'>
@@ -44,18 +67,18 @@ export default function Home() {
       <footer>
         <div>
         <ul class="social-icons">
-          <li><a href="https://bit.ly/2UFwHIY" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-          <li><a href="https://t.me/internfreak" target="_blank"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
-          <li><a href="https://bit.ly/2VAFaOp" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
           </ul>
         </div>
         <div> 
           <p>Copyright ©2021 All rights reserved</p>
         </div>
         <div>
-          <a href="/terms-and-conditions" target="_blank" >Terms &amp; Conditions</a>|
-          <a href="/privacy-policy" target="_blank" >Privacy Policy</a>|
-          <a href="/dmca" target="_blank" >DMCA</a>
+          <a href="#" target="_blank" >Terms &amp; Conditions</a>|
+          <a href="#" target="_blank" >Privacy Policy</a>|
+          <a href="#" target="_blank" >DMCA</a>
         </div>
       </footer>
     </div>

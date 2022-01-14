@@ -7,29 +7,14 @@ const axios = require('axios')
 
 export default function MyProfile() {
 
-    const [expireances, setExpireances] = useState([
-        {
-            'designation':'00Project Manager at some xyz company',
-            'dateFrom':'2-12-15',
-            'dateTo':'09-04-19',
-            'description':'Project management is the process of leading the work of a team to achieve all project goals within the given constraints. This information is usually described in project documentation, created at the beginning of the development process. The primary constraints are scope, time, and budget. The secondary challenge is to optimize the allocation of necessary inputs and apply them to meet pre-defined objectives.'},
-        {
-            'designation':'44Project Manager at some xyz company',
-            'dateFrom':'2-12-15',
-            'dateTo':'09-04-19',
-            'description':'Project management is the process of leading the work of a team to achieve all project goals within the given constraints. This information is usually described in project documentation, created at the beginning of the development process. The primary constraints are scope, time, and budget. The secondary challenge is to optimize the allocation of necessary inputs and apply them to meet pre-defined objectives.'},
-        { 
-            'designation':'33Project Manager at some xyz company',
-            'dateFrom':'2-12-15',
-            'dateTo':'09-04-19',
-            'description':'Graphic design is the profession and academic discipline whose activity consists in projecting visual communications intended to transmit specific messages to social groups, with specific objectives. As opposed to art, whose aim is merely contemplation, design is based on the principle of "form follows a specific function".'}])
+    const [expireances, setExpireances] = useState([])
     const [Redirect, setRedirect] = useState(false)
-    const [skills, setSkills] = useState(['HTML','CSS','JavaScript','ReactJS','NodeJS','HTML','CSS','JavaScript'])
-    const [info, setInfo] = useState({username:"@mdirfan-code",fullName:"Md. Irfan",currentUserType:"Freelancer",emailId:"mdirfan.code@gmail.com",contactNo:"90877234234",isVerified:true})
+    const [skills, setSkills] = useState([])
+    const [info, setInfo] = useState({})
     
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.get('http://localhost:5000/dash/MyProfile',{
+        axios.get('/dash/MyProfile',{
             headers:{
                 'authorization': bearerToken
             }
@@ -44,7 +29,7 @@ export default function MyProfile() {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("http://localhost:5000/auth/refreshToken",{
+                axios.post("d/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -79,7 +64,7 @@ export default function MyProfile() {
             <div className='my-profile-layout'>
             <div className='upper-side-my-profile'>
                 <div className='my-profile-image'>
-                    <img src={'https://pbs.twimg.com/profile_images/531611861758660608/F3muqP6v.jpeg'} width='200px'/>
+                    <img src={info.profilePicUrl} width='200px'/>
                 </div>
                 <div className='wrapper-headers-my-info'>
                 <div className='headers-my-info'>

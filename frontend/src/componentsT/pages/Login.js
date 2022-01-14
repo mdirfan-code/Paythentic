@@ -9,7 +9,7 @@ import useStyles from './MaterialUIStyle.js';
 
 const axios = require('axios')
 
-
+const { baseURL } = require('../../axios_config.js').config()
 
 const Login=({handleChange})=>{
 
@@ -45,7 +45,7 @@ const Login=({handleChange})=>{
 
         console.log("Sending request...........")
    
-            axios.post(`http://localhost:5000/auth/login`, {
+            axios.post(`https://paythentic.herokuapp.com/auth/login`, {
                 
                 username: makeUsername(values.emailId),
                 password: values.password
@@ -67,7 +67,7 @@ const Login=({handleChange})=>{
                     console.log("passed usertype")
 
                     setInterval(()=>{
-                        axios.post(`http://localhost:5000/auth/refreshToken`,{
+                        axios.post(`https://paythentic.herokuapp.com/auth/refreshToken`,{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -131,15 +131,7 @@ const Login=({handleChange})=>{
                         onChange={handleInputChange}
                         fullWidth 
                         required/>
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            name="checkedB"
-                            color="primary"
-                        />
-                        }
-                        label="Remember me"
-                    />
+                   
                     <Button className={classes.buttons} type='submit' color='primary' variant="contained"  fullWidth>Log in</Button>
                     <Typography >
                         <Link href="#" >

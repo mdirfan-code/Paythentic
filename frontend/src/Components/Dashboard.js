@@ -6,6 +6,9 @@ import Messaging from './Messaging';
 import NavBar from './NavBar';
 
 const axios = require('axios')
+
+const { baseURL } = require('../axios_config.js').config()
+
 export default function Dashboard() {
     const {paramProjId} = useParams();
     const [projectDetails,setProjectDetails] = useState({})
@@ -16,8 +19,9 @@ export default function Dashboard() {
 
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        
-        axios.get(`http://localhost:5000/project/${paramProjId}`,{
+        const urlApi = `/project/${paramProjId}`
+        console.log(urlApi)
+        axios.get(urlApi,{
             headers:{
                 'authorization': bearerToken
             }
@@ -41,7 +45,7 @@ export default function Dashboard() {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("http://localhost:5000/auth/refreshToken",{
+                axios.post("/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -79,7 +83,7 @@ export default function Dashboard() {
          <div className="bg-DshBrd">
     
                 <div className="proj-desc"><div className="proj-info">
-                <h3>PRJ#{}</h3>
+                <h3>PRJ#{paramProjId}</h3>
                 <h1>{projectDetails.projectName}</h1>
                 <h6>{projectDetails.projectDscrp}</h6>
                 </div>
