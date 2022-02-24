@@ -41,10 +41,10 @@ const searchRouter = require('./Routes/Search')
 
 
 
-app.use('/auth/', usersRouter)
-app.use('/search/',searchRouter)
-app.use('/dash/', verifyAccessToken ,dashboardRouter)
-app.use('/project/', verifyAccessToken ,projectRouter)
+app.use('/api/auth/', usersRouter)
+app.use('/api/search/',searchRouter)
+app.use('/api/dash/', verifyAccessToken ,dashboardRouter)
+app.use('/api/project/', verifyAccessToken ,projectRouter)
 
 
 app.listen(port, () => {

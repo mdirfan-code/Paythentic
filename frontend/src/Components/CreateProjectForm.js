@@ -46,7 +46,7 @@ export default function CreateProjectForm({ setVisibilityCF }) {
 		console.log('sending project details......')
 
 		const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-		axios.post("/dash/createProject", { ...projectValues }, {
+		axios.post("/api/dash/createProject", { ...projectValues }, {
 
 			headers: {
 				'authorization': bearerToken

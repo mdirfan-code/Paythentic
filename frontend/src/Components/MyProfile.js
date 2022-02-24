@@ -14,7 +14,7 @@ export default function MyProfile() {
     
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        axios.get('/dash/MyProfile',{
+        axios.get('/api/dash/MyProfile',{
             headers:{
                 'authorization': bearerToken
             }
@@ -29,7 +29,7 @@ export default function MyProfile() {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("d/auth/refreshToken",{
+                axios.post("/api/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {

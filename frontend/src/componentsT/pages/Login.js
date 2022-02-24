@@ -45,7 +45,7 @@ const Login=({handleChange})=>{
 
         console.log("Sending request...........")
    
-            axios.post(`https://paythentic.herokuapp.com/auth/login`, {
+            axios.post(`/api/auth/login`, {
                 
                 username: makeUsername(values.emailId),
                 password: values.password
@@ -67,7 +67,7 @@ const Login=({handleChange})=>{
                     console.log("passed usertype")
 
                     setInterval(()=>{
-                        axios.post(`https://paythentic.herokuapp.com/auth/refreshToken`,{
+                        axios.post(`/api/auth/refreshToken`,{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {

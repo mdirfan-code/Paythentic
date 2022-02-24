@@ -22,7 +22,7 @@ export default function ProjectList() {
 
             console.log(window.location.hostname)
             const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-            axios.get(`/dash${projectType=='active'?"":"/history"}`,{headers:{
+            axios.get(`/api/dash${projectType=='active'?"":"/history"}`,{headers:{
                 'authorization': bearerToken
             }})
             .then((response)=>{
@@ -31,7 +31,7 @@ export default function ProjectList() {
             })
             .catch((err) =>{
                 if (err.message == 'jwt expired' ){
-                    axios.post(`/auth/refreshToken`,{
+                    axios.post(`/api/auth/refreshToken`,{
                                 refreshToken: localStorage.getItem('refreshToken')
                             })
                             .then((resp) => {

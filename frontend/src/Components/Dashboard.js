@@ -19,7 +19,7 @@ export default function Dashboard() {
 
     useEffect(()=>{
         const bearerToken = `Bearer ${localStorage.getItem('accessToken')}`
-        const urlApi = `/project/${paramProjId}`
+        const urlApi = `/api/project/${paramProjId}`
         console.log(urlApi)
         axios.get(urlApi,{
             headers:{
@@ -45,7 +45,7 @@ export default function Dashboard() {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("/auth/refreshToken",{
+                axios.post("/api/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {

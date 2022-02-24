@@ -39,7 +39,7 @@ function NavBar({userName}) {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("/auth/refreshToken",{
+                axios.post("/api/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -70,7 +70,7 @@ function NavBar({userName}) {
             setFetchedUser([])
             return
         }
-        axios.get('/search',{
+        axios.get('/api/search',{
             params:{q: e.target.value}
         })
         .then((resp) => {
@@ -81,7 +81,7 @@ function NavBar({userName}) {
         
         .catch((err) => {
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("/auth/refreshToken",{
+                axios.post("/api/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
@@ -122,7 +122,7 @@ function NavBar({userName}) {
 
     const logOutHandle = () => {
 
-        axios.post("/auth/logout",{
+        axios.post("/api/auth/logout",{
             refreshToken: localStorage.getItem('refreshToken')
         })
         .then((resp)=>{
@@ -191,14 +191,14 @@ function NavBar({userName}) {
     function SearchList(){
 
         const clickHandlerUname = async (uname) => {
-            window.location.assign(`/search/${uname}`)
+            window.location.assign(`/api/search/${uname}`)
             
         }
 
 
         return(<div className='searchList'>
                 {
-                    fetchedUsers.length >0 ?fetchedUsers.map(user =><Link to={`/search/${user.username}`} ><div className='uname-bar' key={user.username} onClickCapture={()=>clickHandlerUname(user.username)}>{user.username}</div></Link> ): <div className='uname-bar' key ='asdfsdf'>{"No User exist with this username" }</div>
+                    fetchedUsers.length >0 ?fetchedUsers.map(user =><Link to={`/api/search/${user.username}`} ><div className='uname-bar' key={user.username} onClickCapture={()=>clickHandlerUname(user.username)}>{user.username}</div></Link> ): <div className='uname-bar' key ='asdfsdf'>{"No User exist with this username" }</div>
                 }
         </div>)
     }

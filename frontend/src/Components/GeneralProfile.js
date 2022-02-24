@@ -15,7 +15,7 @@ export default function GeneralProfile() {
     
     useEffect(()=>{
        
-        axios.get(`/search/${Username}`)
+        axios.get(`/api/search/${Username}`)
         .then((resp)=>{
             console.log(resp)
             setInfo(resp.data.profile)
@@ -25,7 +25,7 @@ export default function GeneralProfile() {
         })
         .catch((err)=>{
             if (err.message == 'Request failed with status code 401' ){
-                axios.post("/auth/refreshToken",{
+                axios.post("/api/auth/refreshToken",{
                             refreshToken: localStorage.getItem('refreshToken')
                         })
                         .then((resp) => {
